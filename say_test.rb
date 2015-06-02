@@ -10,7 +10,6 @@ class SayTest < Minitest::Test
   end
 
   def test_one
-    skip
     assert_equal 'one', Say.new(1).in_english
   end
 
