@@ -18,6 +18,7 @@ class Say
                    4 => "fourty", 5 => "fifty",
                    6 => "sixty"
                   }
+
     @number = number
   end
 
@@ -26,8 +27,10 @@ class Say
       result = @ones_place[@number]
     elsif @number.to_s[-1] == "0"
       result = @tens_place[@number.to_s[-2].to_i]
+    elsif @number.to_s[-1] != "0"
+      result = "#{@tens_place[@number.to_s[-2].to_i]}-#{@ones_place[@number.to_s[-1].to_i]}"
     end
     result
   end
 end
-p Say.new(20).in_english
+p Say.new(22).in_english
