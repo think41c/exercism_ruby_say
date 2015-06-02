@@ -35,10 +35,13 @@ class Say
     # If array length is 4, append "billions".
     # Work from first element in array to end.
     # 100 - @ones_place = 1 + "hundred"
-    # If next digit is 0, then move to next.
+    # Then run algorithm for 0-99. 
     # 456 - @ones_place = 4 + "hundred"
     # Then run algorithm for 0-99. "fifty six"
-
+    if @number == 0
+      return "zero"
+    end
+    
     if @number < 19
       result = @ones_place[@number]
     elsif @number.to_s[-1] == "0"
@@ -49,4 +52,4 @@ class Say
     result
   end
 end
-p Say.new(52).in_english
+p Say.new(18).in_english
