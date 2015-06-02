@@ -14,9 +14,9 @@ class Say
                      16 => "sixteen", 17 => "seventeen",
                      18 => "eighteen", 19 => "nineteen"
                    }
-    @tens_place = {2 => "twenty-", 3 => "thirty-",
-                   4 => "fourty-", 5 => "fifty-",
-                   6 => "sixty-"
+    @tens_place = {2 => "twenty", 3 => "thirty",
+                   4 => "fourty", 5 => "fifty",
+                   6 => "sixty"
                   }
     @tens_place = "teen"
     @number = number
