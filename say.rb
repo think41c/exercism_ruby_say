@@ -4,7 +4,7 @@ class Say
     # the number 20. 
 
     @ones_place = { 
-                  0  => "zero",  1 => "one", 
+                  00  => "",  1 => "one", 
                   2  => "two",   3 => "three",
                   4  => "four",  5 => "five",
                   6  => "six",   7 => "seven",
@@ -41,7 +41,9 @@ class Say
     if @number == 0
       return "zero"
     end
-    
+
+    number_splitter 
+
     if @number < 19
       result = @ones_place[@number]
     elsif @number.to_s[-1] == "0"
@@ -51,5 +53,9 @@ class Say
     end
     result
   end
+
+  def number_splitter
+  end
+  
 end
 p Say.new(18).in_english
