@@ -18,7 +18,6 @@ class SayTest < Minitest::Test
   end
 
   def test_twenty
-    skip
     # This really shouldn't be twenty-zero
     assert_equal 'twenty', Say.new(20).in_english
   end
