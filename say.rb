@@ -18,11 +18,16 @@ class Say
                    4 => "fourty", 5 => "fifty",
                    6 => "sixty"
                   }
-    @tens_place = "teen"
     @number = number
   end
 
   def in_english
-    @ones_place [@number]
+    if @number < 19 
+      result = @ones_place[@number]
+    elsif @number.to_s[-1] == "0"
+      result = @tens_place[@number.to_s[-2].to_i]
+    end
+    result
   end
 end
+p Say.new(20).in_english
