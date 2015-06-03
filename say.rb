@@ -56,7 +56,16 @@ class Say
 
   def number_splitter
     number = @number.to_s.chars
+    group  = 0
+    result = ["B"]
+    until group == 3
+      result[0] << "A"
+      group += 1
+    end
+    p result
     p number
+
+
   end
   
 end
