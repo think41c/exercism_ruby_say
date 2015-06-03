@@ -59,14 +59,15 @@ class Say
     group  = 0
     result = ["B"]
     until group == 3
-      result[0] << "A"
+      a = number.each_slice(3)
+      p a
       group += 1
     end
     p result
-    p number
+    p number.join
 
 
   end
   
 end
-p Say.new(180).in_english
+p Say.new(1834).in_english
