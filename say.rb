@@ -55,7 +55,9 @@ class Say
   end
 
   def number_splitter
+    number = @number.to_s.chars
+    p number
   end
   
 end
-p Say.new(18).in_english
+p Say.new(180).in_english
