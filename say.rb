@@ -58,11 +58,14 @@ class Say
     number = @number.to_s.chars
     group  = 0
     result = ["B"]
+    b = 0
     until group == 3
-      a = number.each_slice(3)
+      a = number.each_slice(3).to_a
+      b = a[0].join
       p a
       group += 1
     end
+    p b 
     p result
     p number.join
 
