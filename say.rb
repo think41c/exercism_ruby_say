@@ -55,21 +55,8 @@ class Say
   end
 
   def number_splitter
-    number = @number.to_s.chars
-    group  = 0
-    result = ["B"]
-    b = 0
-    until group == 3
-      a = number.each_slice(3).to_a
-      b = a[0].join
-      p a
-      group += 1
-    end
-    p b 
-    p result
-    p number.join
-
-
+    split = @number.to_s.chars.reverse.each_slice(3).map {|s| s.reverse.join.to_i }.reverse
+    puts split
   end
   
 end
