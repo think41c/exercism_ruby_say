@@ -39,7 +39,7 @@ class Say
       return "zero"
     end
 
-    number_splitter 
+    split = number_splitter 
 
     if @number < 19
       result = @ones_place[@number]
@@ -52,9 +52,8 @@ class Say
   end
 
   def number_splitter
-    split = @number.to_s.chars.reverse.each_slice(3).map {|s| s.reverse.join.to_i }.reverse
-    p split
+    @number.to_s.chars.reverse.each_slice(3).map {|s| s.reverse.join.to_i }.reverse
   end
   
 end
-# p Say.new(12834).in_english
+p Say.new(12834).in_english
