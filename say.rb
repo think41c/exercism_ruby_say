@@ -1,8 +1,5 @@
 class Say
   def initialize(number)
-    # Things don't become uniform and totally systematic until
-    # the number 20. 
-
     @ones_place = { 
                   00  => "",  1 => "one", 
                   2  => "two",   3 => "three",
@@ -56,8 +53,8 @@ class Say
 
   def number_splitter
     split = @number.to_s.chars.reverse.each_slice(3).map {|s| s.reverse.join.to_i }.reverse
-    puts split
+    p split
   end
   
 end
-p Say.new(1834).in_english
+# p Say.new(12834).in_english
