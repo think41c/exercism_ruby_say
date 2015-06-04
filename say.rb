@@ -40,7 +40,12 @@ class Say
     end
 
     split = number_splitter 
+    degree = split.length
+    number_under_hundred
+    
+  end
 
+  def number_under_hundred
     if @number < 19
       result = @ones_place[@number]
     elsif @number.to_s[-1] == "0"
