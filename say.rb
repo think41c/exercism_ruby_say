@@ -45,10 +45,15 @@ class Say
       hundred = @number.to_s[-3].to_i
       result = "#{@ones_place[hundred]} hundred"
     end
-    # puts result 
-    # puts number_under_hundred
-    p result + "" + number_under_hundred
-    # result = result << number_under_hundred
+
+    puts "result #{result}, <100 #{number_under_hundred}"
+
+    # if result >> length && number_under_hundred.length >> 1
+    #   puts number_under_hundred.length
+    #   space = " "
+    # end
+
+    result +  number_under_hundred
 
   end
 
@@ -72,4 +77,4 @@ class Say
   end
   
 end
-Say.new(112).in_english
+p Say.new(100).in_english
