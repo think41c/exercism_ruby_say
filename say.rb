@@ -35,29 +35,36 @@ class Say
     if @number == 0
       return "zero"
     end
-    p "here"
+    result = 0 
     p split = number_splitter 
     p degree = split.length
-    p "end"
     number_under_hundred
     # number_splitter
+    result = ""
     if split[-1].to_s.length == 3
       hundred = @number.to_s[-3].to_i
-      puts "#{@ones_place[hundred]} hundred"
+      result = "#{@ones_place[hundred]} hundred"
     end
-    number_under_hundred
+    # puts result 
+    # puts number_under_hundred
+    p result + "" + number_under_hundred
+    # result = result << number_under_hundred
 
   end
 
   def number_under_hundred
-    if @number < 19
+    if @number.to_s[-1] == "0" && @number.to_s[-2] == "0"
+      result = ""
+    elsif @number < 19
       result = @ones_place[@number]
     elsif @number.to_s[-1] == "0"
       result = @tens_place[@number.to_s[-2].to_i]
     elsif @number.to_s[-1] != "0"
       result = "#{@tens_place[@number.to_s[-2].to_i]}-#{@ones_place[@number.to_s[-1].to_i]}"
     end
+    
     result
+
   end
 
   def number_splitter
@@ -65,4 +72,4 @@ class Say
   end
   
 end
-Say.new(12834).in_english
+Say.new(112).in_english
