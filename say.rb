@@ -48,12 +48,14 @@ class Say
 
     puts "result #{result}, <100 #{number_under_hundred}"
 
-    # if result >> length && number_under_hundred.length >> 1
-    #   puts number_under_hundred.length
-    #   space = " "
-    # end
+    if result.length > 1 && number_under_hundred.length > 1
+      puts number_under_hundred.length
+      space = " "
+    else
+      space = ""
+    end
 
-    result +  number_under_hundred
+    result + space + number_under_hundred
 
   end
 
