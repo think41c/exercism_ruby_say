@@ -24,9 +24,6 @@ class Say
 
   def in_english
     # Pseudo-code
-    # 100,456
-    # Make the number into an array of 3 digit Fixnums.
-    # [100,456]
     # If array length is 2, append "thousands".
     # If array length is 3, append "millions". 
     # If array length is 4, append "billions".
@@ -38,11 +35,18 @@ class Say
     if @number == 0
       return "zero"
     end
-
-    split = number_splitter 
-    degree = split.length
+    p "here"
+    p split = number_splitter 
+    p degree = split.length
+    p "end"
     number_under_hundred
-    
+    # number_splitter
+    if split[-1].to_s.length == 3
+      hundred = @number.to_s[-3].to_i
+      puts "#{@ones_place[hundred]} hundred"
+    end
+    number_under_hundred
+
   end
 
   def number_under_hundred
@@ -61,4 +65,4 @@ class Say
   end
   
 end
-p Say.new(12834).in_english
+Say.new(12834).in_english
