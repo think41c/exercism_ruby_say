@@ -39,7 +39,6 @@ class SayTest < Minitest::Test
   end
 
   def test_1_thousand
-    skip
     assert_equal 'one thousand', Say.new(1000).in_english
   end
 

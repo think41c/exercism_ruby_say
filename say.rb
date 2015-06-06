@@ -23,30 +23,18 @@ class Say
   end
 
   def in_english
-    # Pseudo-code
-    # If array length is 2, append "thousands".
-    # If array length is 3, append "millions". 
-    # If array length is 4, append "billions".
-    # Work from first element in array to end.
-    # 100 - @ones_place = 1 + "hundred"
-    # Then run algorithm for 0-99. 
-    # 456 - @ones_place = 4 + "hundred"
-    # Then run algorithm for 0-99. "fifty six"
     if @number == 0
       return "zero"
     end
     result = 0 
-    p split = number_splitter 
-    p degree = split.length
+    split = number_splitter 
+    degree = split.length
     number_under_hundred
-    # number_splitter
     result = ""
     if split[-1].to_s.length == 3
       hundred = @number.to_s[-3].to_i
       result = "#{@ones_place[hundred]} hundred"
     end
-
-    puts "result #{result}, <100 #{number_under_hundred}"
 
     if result.length > 1 && number_under_hundred.length > 1
       puts number_under_hundred.length
