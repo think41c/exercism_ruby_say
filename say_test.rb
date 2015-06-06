@@ -31,7 +31,6 @@ class SayTest < Minitest::Test
   end
 
   def test_120
-    skip
     assert_equal 'one hundred twenty', Say.new(120).in_english
   end
 
