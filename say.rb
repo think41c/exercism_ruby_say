@@ -51,15 +51,19 @@ class Say
 
   end
 
-  def number_under_hundred
-    if @number.to_s[-1] == "0" && @number.to_s[-2] == "0"
+  def number_under_hundred(x = -1)  
+  # x = -1 is the default, which looks at the last 3 
+  # digits in the number. It should be flexible for what group
+  # of 3 digits it's referring to (thousands, millions, etc).
+  
+    if @number.to_s[x] == "0" && @number.to_s[x-1] == "0"
       result = ""
     elsif @number < 19
       result = @ones_place[@number]
-    elsif @number.to_s[-1] == "0"
-      result = @tens_place[@number.to_s[-2].to_i]
-    elsif @number.to_s[-1] != "0"
-      result = "#{@tens_place[@number.to_s[-2].to_i]}-#{@ones_place[@number.to_s[-1].to_i]}"
+    elsif @number.to_s[x] == "0"
+      result = @tens_place[@number.to_s[x-1].to_i]
+    elsif @number.to_s[x] != "0"
+      result = "#{@tens_place[@number.to_s[x-1].to_i]}-#{@ones_place[@number.to_s[x].to_i]}"
     end
     
     result
