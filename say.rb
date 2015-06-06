@@ -31,6 +31,10 @@ class Say
     degree = split.length
     number_under_hundred
     result = ""
+    if split[-2].to_s.length >= 1
+      puts "x Thousand"
+    end
+
     if split[-1].to_s.length == 3
       hundred = @number.to_s[-3].to_i
       result = "#{@ones_place[hundred]} hundred"
@@ -67,4 +71,4 @@ class Say
   end
   
 end
-p Say.new(100).in_english
+p Say.new(1200).in_english
