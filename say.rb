@@ -30,8 +30,11 @@ class Say
     degree = split.length
     number_under_hundred
     result = ""
+
     if split[-2].to_s.length >= 1
       thousands = -2
+      puts split[-2]
+      puts number_under_hundred(thousands)
       result = number_under_hundred(thousands) + " thousand"
       puts result
     end
@@ -49,15 +52,14 @@ class Say
     end
 
     result + space + number_under_hundred
-
   end
 
-  def number_under_hundred(x = -1)  
+  def number_under_hundred(x = -1, split_num = 0)
   # x = -1 is the default, which looks at the last 3 
   # digits in the number. It should be flexible for what group
   # of 3 digits it's referring to (thousands, millions, etc).
   
-    if @number.to_s[x] == "0" && @number.to_s[x-1] == "0"
+    if split_num.to_s[x] == "0" && @number.to_s[x-1] == "0"
       result = ""
     elsif @number < 19
       result = @ones_place[@number]
@@ -76,4 +78,4 @@ class Say
   end
   
 end
-p Say.new(1200).in_english
+p Say.new(13).in_english
