@@ -32,7 +32,7 @@ class Say
     result = ""
     if split[-2].to_s.length >= 1
       thousands = -2
-      result = number_under_hundred(thousands) + "thousand "
+      result = number_under_hundred(thousands) + " thousand"
       puts result
     end
 
