@@ -58,6 +58,7 @@ class Say
   # x = -1 is the default, which looks at the last 3 
   # digits in the number. It should be flexible for what group
   # of 3 digits it's referring to (thousands, millions, etc).
+  # TODO: replace the split_num appropriately throughout
   
     if split_num.to_s[x] == "0" && @number.to_s[x-1] == "0"
       result = ""
