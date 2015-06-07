@@ -31,7 +31,9 @@ class Say
     number_under_hundred
     result = ""
     if split[-2].to_s.length >= 1
-      puts "x Thousand"
+      thousands = -2
+      result = number_under_hundred(thousands) + "thousand "
+      puts result
     end
 
     if split[-1].to_s.length == 3
