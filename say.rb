@@ -27,7 +27,6 @@ class Say
       return "zero"
     end
     result = 0 
-    split = number_splitter 
     degree = split.length
     number_under_hundred
     result = ""
@@ -70,7 +69,7 @@ class Say
 
   end
 
-  def number_splitter
+  def split
     @number.to_s.chars.reverse.each_slice(3).map {|s| s.reverse.join.to_i }.reverse
   end
   
