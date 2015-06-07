@@ -24,16 +24,15 @@ class Say
   end
 
   def in_english
-    puts @split_num
-    puts "hi"
+    p @split_num
     if @number == 0
       return "zero"
     end
   end
 
   def split(num)
-    num.to_s.chars.reverse.each_slice(3).map {|s| s.reverse.join.to_i }.reverse
+    num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(0).in_english
+p Say.new(1000).in_english
 
