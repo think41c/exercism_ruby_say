@@ -24,9 +24,8 @@ class Say
   end
 
   def in_english
+    result = ""
     degrees = @split_num.length
-    p degrees
-    p @split_num
 
     if @number == 0
       return "zero"
@@ -34,22 +33,23 @@ class Say
     
     x = -1
     if @split_num[x].length == 3 
-      puts "hi"
+      puts "3 digit number"
     end
     
-    result = ""
+        
     if @number < 20 
       @ones_place[@split_num[x]]
     else
-      p @ones_place[@split_num[x][-1]]
+      if @split_num[x][-1] == "0" 
+        result = @tens_place[@split_num[-1][-2]]
+      end
+    result
     end
   end
-
-
 
   def split(num)
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(12).in_english
+p Say.new(14).in_english
 
