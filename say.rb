@@ -36,8 +36,7 @@ class Say
       puts "3 digit number"
     end
     
-        
-    if @number < 20 
+    if @split_num[-1].to_i < 20
       @ones_place[@split_num[x]]
     else
       if @split_num[x][-1] == "0" 
@@ -57,4 +56,4 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(29).in_english
+p Say.new(99).in_english
