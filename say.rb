@@ -43,6 +43,12 @@ class Say
       if @split_num[x][-1] == "0" 
         result = @tens_place[@split_num[-1][-2]]
       end
+
+      if @split_num[x][-1] != "0"
+        result = @tens_place[@split_num[-1][-2]]
+        result << "-#{@ones_place[@split_num[-1][-1]]}"
+      end
+
     result
     end
   end
@@ -51,5 +57,4 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(14).in_english
-
+p Say.new(29).in_english
