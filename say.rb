@@ -32,7 +32,6 @@ class Say
       return "zero"
     end
     
-    
     if @split_num[x].length == 3 
       result << @ones_place[@split_num[-1][-3]]
       result << " hundred "
@@ -53,7 +52,6 @@ class Say
         result << @tens_place[@split_num[-1][-2]]
         result << "-#{@ones_place[@split_num[-1][-1]]}"
       end
-
     result
     end
   end
