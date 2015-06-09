@@ -26,14 +26,15 @@ class Say
   def in_english
     result = ""
     degrees = @split_num.length
+    x = -1
 
     if @number == 0
       return "zero"
     end
     
-    x = -1
+    
     if @split_num[x].length == 3 
-      result = @ones_place[@split_num[-1][-3]]
+      result << @ones_place[@split_num[-1][-3]]
       result << " hundred "
     end
     
@@ -41,7 +42,7 @@ class Say
       @ones_place[@split_num[x]]
     else
       if @split_num[x][-1] == "0" 
-        result = @tens_place[@split_num[-1][-2]]
+        result << @tens_place[@split_num[-1][-2]]
       end
 
       if @split_num[x][-1] != "0"
@@ -57,4 +58,4 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(123).in_english
+p Say.new(130).in_english
