@@ -33,8 +33,8 @@ class Say
     
     x = -1
     if @split_num[x].length == 3 
-      p result = @ones_place[@split_num[-1][-3]]
-      p result << " hundred"
+      result = @ones_place[@split_num[-1][-3]]
+      result << " hundred "
     end
     
     if @split_num[-1].to_i < 20
@@ -45,7 +45,7 @@ class Say
       end
 
       if @split_num[x][-1] != "0"
-        result = @tens_place[@split_num[-1][-2]]
+        result << @tens_place[@split_num[-1][-2]]
         result << "-#{@ones_place[@split_num[-1][-1]]}"
       end
 
