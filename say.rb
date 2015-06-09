@@ -32,19 +32,22 @@ class Say
     end
     
     if @split_num.length == 2 
-      puts "lenght =3 /"
         if @ones_place[@split_num[-2][-1]].nil?
-          puts "herfsdse?"
           puts @ones_place[@split_num]
           puts @split_num
-          # 000 
         else
           result << @ones_place[@split_num[-2][-3]]
           result << " hundred "
         end
     end
+    tens_n_ones(@split_num[-2])
+  end
 
-# Deal with the hundreds digit
+########
+  def tens_n_ones(the_split_num)
+    x = -1
+    result = ""
+    # Deal with the hundreds digit
     if @split_num[x].length == 3 
       if @ones_place[@split_num[-1][-3]].nil?
         puts "this is if it's x000"
@@ -65,18 +68,18 @@ class Say
           result << @tens_place[@split_num[-1][-2]]
         end 
       end
-
     if @split_num[-1][-1] != "0"
       result << @tens_place[@split_num[-1][-2]]
       result << "-#{@ones_place[@split_num[-1][-1]]}"
     end
     result
     end
+  
   end
-
+########
   def split(num)
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
 
-p Say.new(999).in_english
+p Say.new(999888).in_english
