@@ -45,8 +45,8 @@ class Say
         if @tens_place[@split_num[-1][-2]].nil?
           result = "#{@ones_place[@split_num[-1][-3]]} hundred"
         else
-          #maybe not needed?          
-        end
+          result = @tens_place[@split_num[-1][-2]]
+        end 
       end
 
       if @split_num[x][-1] != "0"
@@ -62,4 +62,4 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(123).in_english
+p Say.new(20).in_english
