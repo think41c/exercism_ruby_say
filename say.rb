@@ -1,4 +1,3 @@
-
 class Say
   def initialize(number)
     @ones_place = { 
@@ -32,23 +31,34 @@ class Say
       return "zero"
     end
     
-    if @split_num.length == 2
-      puts "this is 1000+"
+    if @split_num.length == 2 
+      puts "lenght =3 /"
+        if @ones_place[@split_num[-2][-1]].nil?
+          puts "herfsdse?"
+          puts @ones_place[@split_num]
+          puts @split_num
+          # 000 
+        else
+          result << @ones_place[@split_num[-2][-3]]
+          result << " hundred "
+        end
     end
 
+# Deal with the hundreds digit
     if @split_num[x].length == 3 
       if @ones_place[@split_num[-1][-3]].nil?
-        # 000 
+        puts "this is if it's x000"
       else
         result << @ones_place[@split_num[-1][-3]]
         result << " hundred "
       end
     end
     
+# Deal with the tens and ones digit
     if @split_num[-1].to_i < 20
       @ones_place[@split_num[x]]
     else
-      if @split_num[x][-1] == "0" 
+      if @split_num[-1][-1] == "0" 
         if @tens_place[@split_num[-1][-2]].nil?
           result = "#{@ones_place[@split_num[-1][-3]]} hundred"
         else
@@ -56,10 +66,10 @@ class Say
         end 
       end
 
-      if @split_num[x][-1] != "0"
-        result << @tens_place[@split_num[-1][-2]]
-        result << "-#{@ones_place[@split_num[-1][-1]]}"
-      end
+    if @split_num[-1][-1] != "0"
+      result << @tens_place[@split_num[-1][-2]]
+      result << "-#{@ones_place[@split_num[-1][-1]]}"
+    end
     result
     end
   end
@@ -68,4 +78,5 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
+
 p Say.new(999).in_english
