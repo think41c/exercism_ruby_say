@@ -32,9 +32,17 @@ class Say
       return "zero"
     end
     
+    if @split_num.length == 2
+      puts "this is 1000+"
+    end
+
     if @split_num[x].length == 3 
-      result << @ones_place[@split_num[-1][-3]]
-      result << " hundred "
+      if @ones_place[@split_num[-1][-3]].nil?
+        # 000 
+      else
+        result << @ones_place[@split_num[-1][-3]]
+        result << " hundred "
+      end
     end
     
     if @split_num[-1].to_i < 20
@@ -60,4 +68,4 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(120).in_english
+p Say.new(999).in_english
