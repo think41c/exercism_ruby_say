@@ -33,7 +33,8 @@ class Say
     
     x = -1
     if @split_num[x].length == 3 
-      puts "3 digit number"
+      p result = @ones_place[@split_num[-1][-3]]
+      p result << " hundred"
     end
     
     if @split_num[-1].to_i < 20
@@ -56,4 +57,4 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-p Say.new(99).in_english
+p Say.new(123).in_english
