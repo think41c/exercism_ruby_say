@@ -40,12 +40,11 @@ class Say
           result << " hundred "
         end
     end
-    tens_n_ones(@split_num[-2])
+    tens_n_ones(@split_num[-2], -1)
   end
 
 ########
-  def tens_n_ones(the_split_num)
-    x = -1
+  def tens_n_ones(the_split_num, x)
     result = ""
     # Deal with the hundreds digit
     if @split_num[x].length == 3 
@@ -77,6 +76,8 @@ class Say
   
   end
 ########
+
+
   def split(num)
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
