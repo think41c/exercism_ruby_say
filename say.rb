@@ -44,32 +44,32 @@ class Say
   end
 
 ########
-  def tens_n_ones(the_split_num, x)
+  def tens_n_ones(the_split_num, deg)
     result = ""
     # Deal with the hundreds digit
-    if @split_num[x].length == 3 
-      if @ones_place[@split_num[-1][-3]].nil?
+    if @split_num[deg].length == 3 
+      if @ones_place[@split_num[deg][-3]].nil?
         puts "this is if it's x000"
       else
-        result << @ones_place[@split_num[-1][-3]]
+        result << @ones_place[@split_num[deg][-3]]
         result << " hundred "
       end
     end
     
 # Deal with the tens and ones digit
-    if @split_num[-1].to_i < 20
-      @ones_place[@split_num[x]]
+    if @split_num[deg].to_i < 20
+      @ones_place[@split_num[deg]]
     else
-      if @split_num[-1][-1] == "0" 
-        if @tens_place[@split_num[-1][-2]].nil?
-          result = "#{@ones_place[@split_num[-1][-3]]} hundred"
+      if @split_num[deg][-1] == "0" 
+        if @tens_place[@split_num[deg][-2]].nil?
+          result = "#{@ones_place[@split_num[deg][-3]]} hundred"
         else
-          result << @tens_place[@split_num[-1][-2]]
+          result << @tens_place[@split_num[deg][-2]]
         end 
       end
-    if @split_num[-1][-1] != "0"
-      result << @tens_place[@split_num[-1][-2]]
-      result << "-#{@ones_place[@split_num[-1][-1]]}"
+    if @split_num[deg][-1] != "0"
+      result << @tens_place[@split_num[deg][-2]]
+      result << "-#{@ones_place[@split_num[deg][-1]]}"
     end
     result
     end
