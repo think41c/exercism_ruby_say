@@ -36,12 +36,21 @@ class Say
           puts @ones_place[@split_num]
           puts @split_num
         else
+          if @ones_place[@split_num[-2][-3]].nil?
+            # puts ""
+          else
           result << @ones_place[@split_num[-2][-3]]
           result << " hundred "
+          end
         end
     end
     x = tens_n_ones(@split_num[-3], -2)
-    x << " thousand " + tens_n_ones(@split_num[-2], -1)
+    if tens_n_ones(@split_num[-2], -1).nil? 
+      puts x + " thousand"
+    else
+      x << " thousand " + tens_n_ones(@split_num[-2], -1)
+    end
+
   end
 
   def tens_n_ones(the_split_num, deg)
@@ -49,7 +58,6 @@ class Say
     # Deal with the hundreds digit
     if @split_num[deg].length == 3 
       if @ones_place[@split_num[deg][-3]].nil?
-        puts "this is if it's x000"
       else
         result << @ones_place[@split_num[deg][-3]]
         result << " hundred "
@@ -81,4 +89,4 @@ class Say
   end
 end
 
-p Say.new(456123).in_english
+p Say.new(1999).in_english
