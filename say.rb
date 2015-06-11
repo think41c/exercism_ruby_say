@@ -43,7 +43,6 @@ class Say
     tens_n_ones(@split_num[-2], -1)
   end
 
-########
   def tens_n_ones(the_split_num, deg)
     result = ""
     # Deal with the hundreds digit
@@ -75,8 +74,6 @@ class Say
     end
   
   end
-########
-
 
   def split(num)
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
