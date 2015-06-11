@@ -40,8 +40,8 @@ class Say
           result << " hundred "
         end
     end
-    p tens_n_ones(@split_num[-3], -2)
-    p tens_n_ones(@split_num[-2], -1)
+    x = tens_n_ones(@split_num[-3], -2)
+    x << " thousand " + tens_n_ones(@split_num[-2], -1)
   end
 
   def tens_n_ones(the_split_num, deg)
