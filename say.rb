@@ -40,7 +40,8 @@ class Say
           result << " hundred "
         end
     end
-    tens_n_ones(@split_num[-2], -1)
+    p tens_n_ones(@split_num[-3], -2)
+    p tens_n_ones(@split_num[-2], -1)
   end
 
   def tens_n_ones(the_split_num, deg)
@@ -80,4 +81,4 @@ class Say
   end
 end
 
-p Say.new(999888).in_english
+p Say.new(456123).in_english
