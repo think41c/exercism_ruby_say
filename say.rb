@@ -82,11 +82,9 @@ class Say
       end
       if @split_num[deg].length != 3
         # 21-99 come through here
-        puts @split_num[deg].length
         result << "-#{@ones_place[@split_num[deg][-1]]}"
       else 
         # 101+ come through here
-        puts "zz"
         result << "#{@ones_place[@split_num[deg][-1]]}"
       end
     end
