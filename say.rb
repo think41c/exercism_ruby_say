@@ -75,8 +75,15 @@ class Say
         end 
       end
     if @split_num[deg][-1] != "0"
-      result << @tens_place[@split_num[deg][-2]]
-      result << "-#{@ones_place[@split_num[deg][-1]]}"
+      if !@tens_place[@split_num[deg][-2]].nil?
+        result << @tens_place[@split_num[deg][-2]]
+      end
+      if @split_num[deg].length != 3
+        puts @split_num[deg].length
+        result << "-#{@ones_place[@split_num[deg][-1]]}"
+      else 
+        result << "#{@ones_place[@split_num[deg][-1]]}"
+      end
     end
     result
     end
@@ -88,4 +95,4 @@ class Say
   end
 end
 
-p Say.new(100).in_english
+p Say.new(109).in_english
