@@ -29,6 +29,7 @@ class Say
     if @number == 0
       return "zero"
     end
+
     if @split_num.length == 1
       x = tens_n_ones(@split_num[-1], -1)
     end
@@ -69,6 +70,7 @@ class Say
     else
       if @split_num[deg][-1] == "0" 
         if @tens_place[@split_num[deg][-2]].nil?
+          # 100 comes through here
           result = "#{@ones_place[@split_num[deg][-3]]} hundred"
         else
           result << @tens_place[@split_num[deg][-2]]
@@ -79,9 +81,12 @@ class Say
         result << @tens_place[@split_num[deg][-2]]
       end
       if @split_num[deg].length != 3
+        # 21-99 come through here
         puts @split_num[deg].length
         result << "-#{@ones_place[@split_num[deg][-1]]}"
       else 
+        # 101+ come through here
+        puts "zz"
         result << "#{@ones_place[@split_num[deg][-1]]}"
       end
     end
@@ -95,4 +100,4 @@ class Say
   end
 end
 
-p Say.new(109).in_english
+p Say.new(100).in_english
