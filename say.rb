@@ -25,46 +25,45 @@ class Say
   def in_english
     result = ""
     degrees = @split_num.length
-    x = -1
 
     if @number == 0
       return "zero"
     end
-    
-    if @split_num.length == 2 
-        if @ones_place[@split_num[-2][-1]].nil?
-          puts @ones_place[@split_num]
-          puts @split_num
-        else
-          if @ones_place[@split_num[-2][-3]].nil?
-            # puts ""
-          else
-          result << @ones_place[@split_num[-2][-3]]
-          result << " hundred "
-          end
-        end
-    end
-    x = tens_n_ones(@split_num[-3], -2)
-    if tens_n_ones(@split_num[-2], -1).nil? 
-      puts x + " thousand"
-    else
-      x << " thousand " + tens_n_ones(@split_num[-2], -1)
+    if @split_num.length == 1
+      x = tens_n_ones(@split_num[-1], -1)
     end
 
+    if @split_num.length == 2 
+      if @ones_place[@split_num[-2][-1]].nil?
+        puts @ones_place[@split_num]
+        puts @split_num
+      else
+        result << @ones_place[@split_num[-2][-3]]
+        result << " hundred "
+      end
+      x = tens_n_ones(@split_num[-3], -2)
+      x << " thousand " + tens_n_ones(@split_num[-2], -1)
+    end
+    x
   end
 
   def tens_n_ones(the_split_num, deg)
     result = ""
     # Deal with the hundreds digit
-    if @split_num[deg].length == 3 
-      if @ones_place[@split_num[deg][-3]].nil?
-      else
-        result << @ones_place[@split_num[deg][-3]]
-        result << " hundred "
+    if @split_num[deg].nil?
+      puts "itsnil"
+    else
+      if @split_num[deg].length == 3 
+        if @ones_place[@split_num[deg][-3]].nil?
+          puts "this is if it's x000"
+        else
+          result << @ones_place[@split_num[deg][-3]]
+          result << " hundred "
+        end
       end
     end
-    
 # Deal with the tens and ones digit
+
     if @split_num[deg].to_i < 20
       @ones_place[@split_num[deg]]
     else
@@ -89,4 +88,4 @@ class Say
   end
 end
 
-p Say.new(1999).in_english
+p Say.new(100).in_english
