@@ -53,8 +53,18 @@ class Say
     else
       ones_group << @split_num[-1][-1]
     end
-    # p tens_n_ones(huns_group)
-    tens_n_ones(ones_group)
+    
+    # Make the number ###############
+    # Hundreds place
+    if tens_n_ones(huns_group).nil?
+      # nothing
+    else
+      result << "#{tens_n_ones(huns_group)} hundred"
+    end
+
+    # Tens place
+      result << "#{tens_n_ones(ones_group)}"
+    result
   end
 
   def tens_n_ones(num_chunk)
@@ -62,16 +72,12 @@ class Say
     if num_chunk.to_i < 20
       @ones_place[num_chunk]
     else
-      p @tens_place[num_chunk[-2]]
-      p @ones_place[num_chunk[-1]]
       if num_chunk[-1] == "0"
-        puts "its zero"
         answer = "#{@tens_place[num_chunk[-2]]}"
       else
         answer = "#{@tens_place[num_chunk[-2]]}-#{@ones_place[num_chunk[-1]]}"
       end
     end
-
   end
 
   def split(num)
@@ -79,4 +85,4 @@ class Say
   end
 end
 
-p Say.new(99).in_english
+p Say.new(100).in_english
