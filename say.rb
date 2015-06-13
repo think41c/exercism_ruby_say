@@ -62,7 +62,14 @@ class Say
     if num_chunk.to_i < 20
       @ones_place[num_chunk]
     else
-      @tens_place[num_chunk[-2]]
+      p @tens_place[num_chunk[-2]]
+      p @ones_place[num_chunk[-1]]
+      if num_chunk[-1] == "0"
+        puts "its zero"
+        answer = "#{@tens_place[num_chunk[-2]]}"
+      else
+        answer = "#{@tens_place[num_chunk[-2]]}-#{@ones_place[num_chunk[-1]]}"
+      end
     end
 
   end
@@ -72,4 +79,4 @@ class Say
   end
 end
 
-p Say.new(20).in_english
+p Say.new(99).in_english
