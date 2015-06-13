@@ -63,20 +63,26 @@ class Say
     end
 
     # Tens place
+    if result.length == 0
       result << "#{tens_n_ones(ones_group)}"
+    else 
+      result << " #{tens_n_ones(ones_group)}"
+    end
+
     result
   end
 
   def tens_n_ones(num_chunk)
     result = ""
     if num_chunk.to_i < 20
-      @ones_place[num_chunk]
+      @ones_place[num_chunk.to_i.to_s]
     else
       if num_chunk[-1] == "0"
         answer = "#{@tens_place[num_chunk[-2]]}"
       else
         answer = "#{@tens_place[num_chunk[-2]]}-#{@ones_place[num_chunk[-1]]}"
       end
+
     end
   end
 
@@ -85,4 +91,4 @@ class Say
   end
 end
 
-p Say.new(100).in_english
+p Say.new(199).in_english
