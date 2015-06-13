@@ -25,86 +25,41 @@ class Say
   def in_english
     result = ""
     degrees = @split_num.length
+    puts "The @split_num is #{@split_num}"
 
     if @number == 0
       return "zero"
     end
 
-    if @split_num.length == 1
-      # With the number 123. When we get it back as ["123"] from split_num
-      # we need to split the 3 digit number into 2 groups. The -3 index, which
-      # is 1 in this case. Adn the -1 and -2 index, which is 23 in this case.
-      # Send 1 to tens_n_ones for "one" and 23 to tens_n_ones for "twenty-three" 
-
-      p @split_num[-1]
-      x = tens_n_ones(@split_num[-1], -1)
+    huns_group = ""
+    if @split_num[-1][-3].nil? 
+      huns_group << ""
+    else
+      huns_group << @split_num[-1][-3]
     end
 
-
-    if @split_num.length == 2 
-      if @ones_place[@split_num[-2][-1]].nil?
-        puts @ones_place[@split_num]
-        puts @split_num
-      else
-        result << @ones_place[@split_num[-2][-3]]
-        result << " hundred "
-      end
-      x = tens_n_ones(@split_num[-3], -2)
-      x << " thousand " + tens_n_ones(@split_num[-2], -1)
+    ones_group = ""
+    if @split_num[-1][-2].nil?
+      ones_group << ""
+    else
+      ones_group << @split_num[-1][-2]
     end
-    x
+
+    if @split_num[-1][-1].nil?
+      ones_group << ""
+    else
+      ones_group << @split_num[-1][-1]
+    end
+    p ones_group
+    p tens_n_ones(huns_group)
+    p tens_n_ones(ones_group)
   end
 
-  def tens_n_ones(the_split_num, deg)
+  def tens_n_ones(num_chunk)
     result = ""
-    # Deal with the hundreds digit
-    if @split_num[deg].nil?
-      puts "itsnil"
-    else
-      if @split_num[deg].length == 3 
-        if @ones_place[@split_num[deg][-3]].nil?
-          puts "this is if it's x000"
-        else
-          result << @ones_place[@split_num[deg][-3]]
-          result << " hundred "
-        end
-      end
+    if num_chunk.to_i < 20
+      @ones_place[num_chunk]
     end
-# Deal with the tens and ones digit
-
-    if @split_num[deg].to_i < 20
-      @ones_place[@split_num[deg]]
-    else
-      if @split_num[deg][-1] == "0" 
-        if @tens_place[@split_num[deg][-2]].nil?
-          puts "YY"
-          # 100 comes through here
-          result = "#{@ones_place[@split_num[deg][-3]]} hundred"
-        else
-          puts "BB"
-          result << @tens_place[@split_num[deg][-2]]
-        end 
-      end
-    if @split_num[deg][-1] != "0"
-      if !@tens_place[@split_num[deg][-2]].nil?
-        puts "PP"
-        result << @tens_place[@split_num[deg][-2]]
-      end
-
-      if @split_num[deg].length != 3
-        puts "OO"
-        # 21-99 come through here
-        # p @ones_place[@split_num[deg][-2]]
-        result << "-#{@ones_place[@split_num[deg][-1]]}"
-      else 
-        puts "CC"
-        # 101+ come through here
-        result << "#{@ones_place[@split_num[deg][-1]]}"
-      end
-    end
-    result
-    end
-  
   end
 
   def split(num)
@@ -112,4 +67,4 @@ class Say
   end
 end
 
-p Say.new(100).in_english
+p Say.new(2).in_english
