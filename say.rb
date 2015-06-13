@@ -31,6 +31,7 @@ class Say
     end
 
     if @split_num.length == 1
+      p @split_num[-1]
       x = tens_n_ones(@split_num[-1], -1)
     end
 
@@ -69,23 +70,28 @@ class Say
       @ones_place[@split_num[deg]]
     else
       if @split_num[deg][-1] == "0" 
+        puts "ZZ"
         if @tens_place[@split_num[deg][-2]].nil?
+          puts "YY"
           # 100 comes through here
           result = "#{@ones_place[@split_num[deg][-3]]} hundred"
         else
+          puts "BB"
           result << @tens_place[@split_num[deg][-2]]
         end 
       end
     if @split_num[deg][-1] != "0"
+      puts "PP"
       if !@tens_place[@split_num[deg][-2]].nil?
         result << @tens_place[@split_num[deg][-2]]
       end
       if @split_num[deg].length != 3
         # 21-99 come through here
+        # p @ones_place[@split_num[deg][-2]]
         result << "-#{@ones_place[@split_num[deg][-1]]}"
       else 
         # 101+ come through here
-        result << "-#{@ones_place[@split_num[deg][-1]]}"
+        result << "#{@ones_place[@split_num[deg][-1]]}"
       end
     end
     result
@@ -98,4 +104,4 @@ class Say
   end
 end
 
-p Say.new(999).in_english
+p Say.new(22).in_english
