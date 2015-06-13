@@ -85,7 +85,7 @@ class Say
         result << "-#{@ones_place[@split_num[deg][-1]]}"
       else 
         # 101+ come through here
-        result << "#{@ones_place[@split_num[deg][-1]]}"
+        result << "-#{@ones_place[@split_num[deg][-1]]}"
       end
     end
     result
@@ -98,4 +98,4 @@ class Say
   end
 end
 
-p Say.new(100).in_english
+p Say.new(122).in_english
