@@ -23,35 +23,40 @@ class Say
   end
 
   def in_english
-    result = ""
-    degrees = @split_num.length
     puts "The @split_num is #{@split_num}"
-
     if @number == 0
       return "zero"
     end
+    counter = @split_num.length
+    p counter
+    p number_feeder(@split_num[-2])
+    p number_feeder(@split_num[-1])
+    
+  end
 
+  def number_feeder(num)
+    result = ""  
     huns_group = ""
     # 100-999
-    if @split_num[-1][-3].nil? 
+    if num[-3].nil? 
       huns_group << ""
     else
-      huns_group << @split_num[-1][-3]
+      huns_group << num[-3]
     end
 
     # 10-99
     ones_group = ""
-    if @split_num[-1][-2].nil?
+    if num[-2].nil?
       ones_group << ""
     else
-      ones_group << @split_num[-1][-2]
+      ones_group << num[-2]
     end
 
     # 0-9
-    if @split_num[-1][-1].nil?
+    if num[-1].nil?
       ones_group << ""
     else
-      ones_group << @split_num[-1][-1]
+      ones_group << num[-1]
     end
     
     # Make the number ###############
@@ -91,4 +96,4 @@ class Say
   end
 end
 
-p Say.new(200).in_english
+p Say.new(123456).in_english
