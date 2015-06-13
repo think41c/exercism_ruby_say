@@ -65,10 +65,11 @@ class Say
     # Tens place
     if result.length == 0
       result << "#{tens_n_ones(ones_group)}"
+    elsif tens_n_ones(ones_group).nil?
+      result << "#{tens_n_ones(ones_group)}"
     else 
       result << " #{tens_n_ones(ones_group)}"
     end
-
     result
   end
 
@@ -82,7 +83,6 @@ class Say
       else
         answer = "#{@tens_place[num_chunk[-2]]}-#{@ones_place[num_chunk[-1]]}"
       end
-
     end
   end
 
@@ -91,4 +91,4 @@ class Say
   end
 end
 
-p Say.new(199).in_english
+p Say.new(200).in_english
