@@ -32,12 +32,14 @@ class Say
     end
 
     huns_group = ""
+    # 100-999
     if @split_num[-1][-3].nil? 
       huns_group << ""
     else
       huns_group << @split_num[-1][-3]
     end
 
+    # 10-99
     ones_group = ""
     if @split_num[-1][-2].nil?
       ones_group << ""
@@ -45,21 +47,24 @@ class Say
       ones_group << @split_num[-1][-2]
     end
 
+    # 0-9
     if @split_num[-1][-1].nil?
       ones_group << ""
     else
       ones_group << @split_num[-1][-1]
     end
-    p ones_group
-    p tens_n_ones(huns_group)
-    p tens_n_ones(ones_group)
+    # p tens_n_ones(huns_group)
+    tens_n_ones(ones_group)
   end
 
   def tens_n_ones(num_chunk)
     result = ""
     if num_chunk.to_i < 20
       @ones_place[num_chunk]
+    else
+      @tens_place[num_chunk[-2]]
     end
+
   end
 
   def split(num)
@@ -67,4 +72,4 @@ class Say
   end
 end
 
-p Say.new(2).in_english
+p Say.new(20).in_english
