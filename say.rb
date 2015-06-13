@@ -31,9 +31,15 @@ class Say
     end
 
     if @split_num.length == 1
+      # With the number 123. When we get it back as ["123"] from split_num
+      # we need to split the 3 digit number into 2 groups. The -3 index, which
+      # is 1 in this case. Adn the -1 and -2 index, which is 23 in this case.
+      # Send 1 to tens_n_ones for "one" and 23 to tens_n_ones for "twenty-three" 
+
       p @split_num[-1]
       x = tens_n_ones(@split_num[-1], -1)
     end
+
 
     if @split_num.length == 2 
       if @ones_place[@split_num[-2][-1]].nil?
@@ -70,7 +76,6 @@ class Say
       @ones_place[@split_num[deg]]
     else
       if @split_num[deg][-1] == "0" 
-        puts "ZZ"
         if @tens_place[@split_num[deg][-2]].nil?
           puts "YY"
           # 100 comes through here
@@ -81,15 +86,18 @@ class Say
         end 
       end
     if @split_num[deg][-1] != "0"
-      puts "PP"
       if !@tens_place[@split_num[deg][-2]].nil?
+        puts "PP"
         result << @tens_place[@split_num[deg][-2]]
       end
+
       if @split_num[deg].length != 3
+        puts "OO"
         # 21-99 come through here
         # p @ones_place[@split_num[deg][-2]]
         result << "-#{@ones_place[@split_num[deg][-1]]}"
       else 
+        puts "CC"
         # 101+ come through here
         result << "#{@ones_place[@split_num[deg][-1]]}"
       end
@@ -104,4 +112,4 @@ class Say
   end
 end
 
-p Say.new(22).in_english
+p Say.new(100).in_english
