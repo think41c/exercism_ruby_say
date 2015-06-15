@@ -27,10 +27,10 @@ class Say
     if @number == 0
       return "zero"
     end
-    counter = @split_num.length
-    p counter
-    p number_feeder(@split_num[-2])
-    p number_feeder(@split_num[-1])
+
+    if !@split_num[-2].nil? then number_feeder(@split_num[-2]) end
+    if !@split_num[-1].nil? then number_feeder(@split_num[-1]) end
+
     
   end
 
@@ -96,4 +96,4 @@ class Say
   end
 end
 
-p Say.new(123456).in_english
+p Say.new(456).in_english
