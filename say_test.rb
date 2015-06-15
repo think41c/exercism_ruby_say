@@ -43,7 +43,6 @@ class SayTest < Minitest::Test
   end
 
   def test_1_thousand_234
-    skip
     expected = 'one thousand two hundred thirty-four'
     assert_equal expected, Say.new(1234).in_english
   end

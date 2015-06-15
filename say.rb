@@ -35,8 +35,12 @@ class Say
     end
 
     if !@split_num[-1].nil? 
-      x << number_feeder(@split_num[-1]) 
+      if x.length == 0 
+        x << number_feeder(@split_num[-1]) 
+      else
+        x << " " + number_feeder(@split_num[-1]) 
       end
+    end
     x
   end
 
@@ -102,4 +106,4 @@ class Say
   end
 end
 
-p Say.new(191).in_english
+p Say.new(1234).in_english
