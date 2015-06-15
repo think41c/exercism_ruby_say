@@ -28,10 +28,14 @@ class Say
       return "zero"
     end
 
-    if !@split_num[-2].nil? then number_feeder(@split_num[-2]) end
+    x = "" 
+    if !@split_num[-2].nil? 
+      x << number_feeder(@split_num[-2]) 
+      x << " thousand" 
+    end
     if !@split_num[-1].nil? then number_feeder(@split_num[-1]) end
 
-    
+    x
   end
 
   def number_feeder(num)
@@ -96,4 +100,4 @@ class Say
   end
 end
 
-p Say.new(456).in_english
+p Say.new(1000).in_english
