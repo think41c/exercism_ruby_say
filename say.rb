@@ -33,8 +33,10 @@ class Say
       x << number_feeder(@split_num[-2]) 
       x << " thousand" 
     end
-    if !@split_num[-1].nil? then number_feeder(@split_num[-1]) end
 
+    if !@split_num[-1].nil? 
+      x << number_feeder(@split_num[-1]) 
+      end
     x
   end
 
@@ -100,4 +102,4 @@ class Say
   end
 end
 
-p Say.new(1000).in_english
+p Say.new(191).in_english
