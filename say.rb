@@ -36,14 +36,22 @@ class Say
 
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
-      x << " thousand" 
+      if number_feeder(@split_num[-2]).length == 0 
+        x = x[0..-2]
+      else
+        x << " thousand" 
+      end
     end
 
     if !@split_num[-1].nil? 
       if x.length == 0 
         x << number_feeder(@split_num[-1]) 
       else
-        x << " " + number_feeder(@split_num[-1]) 
+        if number_feeder(@split_num[-1]).length == 0 
+          x 
+        else
+          x << " " + number_feeder(@split_num[-1]) 
+        end
       end
     end
     x
@@ -111,4 +119,4 @@ class Say
   end
 end
 
-p Say.new(1234258).in_english
+p Say.new(1000008).in_english
