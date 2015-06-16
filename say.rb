@@ -23,36 +23,30 @@ class Say
   end
 
   def in_english
-    result = "" 
+    puts "The @split_num is #{@split_num}"
+    x = ""
     if @number == 0
       return "zero"
     end
-
+    
     if !@split_num[-3].nil? 
-      result << number_feeder(@split_num[-3]) 
-      result << " million" 
+      x << number_feeder(@split_num[-3]) 
+      x << " million " 
     end
 
-    if !@split_num[-2].nil? && !number_feeder(@split_num[-2]).length == 0 
-      if result.length == 0 
-        result << number_feeder(@split_num[-2]) + " thousand"
-      else
-        result << " " + number_feeder(@split_num[-2]) + " thousand"
-      end
+    if !@split_num[-2].nil? 
+      x << number_feeder(@split_num[-2]) 
+      x << " thousand" 
     end
 
     if !@split_num[-1].nil? 
-      if result.length == 0 
-        result << number_feeder(@split_num[-1]) 
+      if x.length == 0 
+        x << number_feeder(@split_num[-1]) 
       else
-        if result.length != 0
-          result
-        else
-          result << " " + number_feeder(@split_num[-1]) 
-        end
+        x << " " + number_feeder(@split_num[-1]) 
       end
     end
-    result
+    x
   end
 
   def number_feeder(num)
@@ -117,4 +111,4 @@ class Say
   end
 end
 
-p Say.new(1000000).in_english
+p Say.new(1234258).in_english
