@@ -48,7 +48,6 @@ class SayTest < Minitest::Test
   end
 
   def test_1_million
-    skip
     assert_equal 'one million', Say.new(10**6).in_english
   end
 
