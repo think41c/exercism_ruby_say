@@ -119,4 +119,4 @@ class Say
   end
 end
 
-p Say.new(1000008).in_english
+p Say.new(10087).in_english
