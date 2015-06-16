@@ -28,6 +28,16 @@ class Say
     if @number == 0
       return "zero"
     end
+
+    if !@split_num[-4].nil? 
+      x << number_feeder(@split_num[-4]) 
+      if number_feeder(@split_num[-4]).length == 0 
+        x = x[0..-2]
+      else
+        x << " billion " 
+      end
+    end
+
     
     if !@split_num[-3].nil? 
       x << number_feeder(@split_num[-3]) 
@@ -119,4 +129,4 @@ class Say
   end
 end
 
-p Say.new(10087).in_english
+p Say.new(9102287999).in_english
