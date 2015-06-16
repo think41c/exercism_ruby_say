@@ -32,7 +32,7 @@ class Say
     if !@split_num[-4].nil? 
       x << number_feeder(@split_num[-4]) 
       if number_feeder(@split_num[-4]).length == 0 
-        x = x[0..-2]
+        # x = x[0..-2]
       else
         x << " billion " 
       end
@@ -40,14 +40,21 @@ class Say
 
     
     if !@split_num[-3].nil? 
+      # x << number_feeder(@split_num[-3]) 
+      # x << " million " 
       x << number_feeder(@split_num[-3]) 
-      x << " million " 
+      if number_feeder(@split_num[-3]).length == 0 
+        x = x[0..-2]
+      else
+        x << " million" 
+      end
+
     end
 
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
       if number_feeder(@split_num[-2]).length == 0 
-        x = x[0..-2]
+        # x = x[0..-2]
       else
         x << " thousand" 
       end
@@ -129,4 +136,4 @@ class Say
   end
 end
 
-p Say.new(9102287999).in_english
+p Say.new(119).in_english
