@@ -55,7 +55,6 @@ class SayTest < Minitest::Test
   end
 
   def test_1_million_2_thousand_345
-    skip
     expected = 'one million two thousand three hundred forty-five'
     assert_equal expected, Say.new(1_002_345).in_english
   end
@@ -66,7 +65,6 @@ class SayTest < Minitest::Test
   end
 
   def test_really_big_number
-    skip
     expected = 'nine hundred eighty-seven billion '
     expected << 'six hundred fifty-four million '
     expected << 'three hundred twenty-one thousand '

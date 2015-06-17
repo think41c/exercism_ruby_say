@@ -16,7 +16,7 @@ class Say
                   "2" => "twenty", "3" => "thirty",
                   "4" => "forty", "5" => "fifty",
                   "6" => "sixty",  "7" => "seventy",
-                  "8" => "eigthy", "9" => "ninety"
+                  "8" => "eighty", "9" => "ninety"
                   }
     @number = number
 
@@ -29,6 +29,7 @@ class Say
       raise ArgumentError, "Out of bounds"
     end
 
+    flag = false
 
     puts "The @split_num is #{@split_num}"
     x = ""
@@ -53,15 +54,15 @@ class Say
       if number_feeder(@split_num[-3]).length == 0 
         x = x[0..-2]
       else
-        x << " million" 
+        x << " million " 
       end
 
     end
 
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
-      if number_feeder(@split_num[-2]).length == 0 
-        # x = x[0..-2]
+      if number_feeder(@split_num[-2]).length == 0
+        x = x[0..-2]
       else
         x << " thousand" 
       end
@@ -142,3 +143,6 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
+
+p Say.new(987_654_321_123).in_english
+p Say.new(1_000_000_000).in_english
