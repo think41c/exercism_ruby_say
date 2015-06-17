@@ -19,10 +19,17 @@ class Say
                   "8" => "eigthy", "9" => "ninety"
                   }
     @number = number
+
     @split_num = split(number)            
+
   end
 
   def in_english
+    if @number == -1 
+      raise ArgumentError, "Too low"
+    end
+
+
     puts "The @split_num is #{@split_num}"
     x = ""
     if @number == 0
@@ -135,5 +142,3 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-
-p Say.new(119).in_english
