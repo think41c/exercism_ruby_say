@@ -29,7 +29,7 @@ class Say
       raise ArgumentError, "Out of bounds"
     end
 
-    flag = false
+    flag = true
 
     puts "The @split_num is #{@split_num}"
     x = ""
@@ -48,11 +48,10 @@ class Say
 
     
     if !@split_num[-3].nil? 
-      # x << number_feeder(@split_num[-3]) 
-      # x << " million " 
       x << number_feeder(@split_num[-3]) 
       if number_feeder(@split_num[-3]).length == 0 
         x = x[0..-2]
+        flag = false
       else
         x << " million " 
       end
@@ -62,7 +61,11 @@ class Say
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
       if number_feeder(@split_num[-2]).length == 0
-        x = x[0..-2]
+        if flag == false
+          # do nothing
+        else
+          x = x[0..-2]
+        end
       else
         x << " thousand" 
       end

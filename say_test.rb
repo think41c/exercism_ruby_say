@@ -60,7 +60,6 @@ class SayTest < Minitest::Test
   end
 
   def test_1_billion
-    skip
     assert_equal 'one billion', Say.new(10**9).in_english
   end
 
