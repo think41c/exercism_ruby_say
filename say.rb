@@ -25,8 +25,8 @@ class Say
   end
 
   def in_english
-    if @number == -1 
-      raise ArgumentError, "Too low"
+    if @number < 0 || @number >= 1_000_000_000_000 
+      raise ArgumentError, "Out of bounds"
     end
 
 

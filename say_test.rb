@@ -81,7 +81,6 @@ class SayTest < Minitest::Test
   end
 
   def test_upper_bound
-    skip
     assert_raises ArgumentError do
       Say.new(1_000_000_000_000).in_english
     end
