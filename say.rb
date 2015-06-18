@@ -39,9 +39,7 @@ class Say
 
     if !@split_num[-4].nil? 
       x << number_feeder(@split_num[-4]) 
-      if number_feeder(@split_num[-4]).length == 0 
-        # x = x[0..-2]
-      else
+      if number_feeder(@split_num[-4]).length != 0 
         x << " billion " 
       end
     end
@@ -61,9 +59,7 @@ class Say
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
       if number_feeder(@split_num[-2]).length == 0
-        if flag == false
-          # do nothing
-        else
+        if flag == true
           x = x[0..-2]
         end
       else
@@ -146,6 +142,3 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
-
-p Say.new(987_654_321_123).in_english
-p Say.new(1_000_000_000).in_english
