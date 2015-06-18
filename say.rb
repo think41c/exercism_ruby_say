@@ -25,13 +25,13 @@ class Say
   end
 
   def in_english
+    flag = true
+    x = ""
+
     if @number < 0 || @number >= 1_000_000_000_000 
       raise ArgumentError, "Out of bounds"
     end
-
-    flag = true
-
-    x = ""
+    
     if @number == 0
       return "zero"
     end
@@ -42,7 +42,6 @@ class Say
         x << " billion " 
       end
     end
-
     
     if !@split_num[-3].nil? 
       x << number_feeder(@split_num[-3]) 
@@ -52,7 +51,6 @@ class Say
       else
         x << " million " 
       end
-
     end
 
     if !@split_num[-2].nil? 
@@ -113,7 +111,7 @@ class Say
   end
 
   def tens_n_ones(num_chunk)
-    result = ""
+    # result = ""
     if num_chunk.to_i < 20
       @ones_place[num_chunk.to_i.to_s]
     else
