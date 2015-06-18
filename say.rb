@@ -66,9 +66,7 @@ class Say
       if x.length == 0 
         x << number_feeder(@split_num[-1]) 
       else
-        if number_feeder(@split_num[-1]).length == 0 
-          x 
-        else
+        if number_feeder(@split_num[-1]).length != 0 
           x << " " + number_feeder(@split_num[-1]) 
         end
       end
