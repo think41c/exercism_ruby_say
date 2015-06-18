@@ -1,7 +1,7 @@
 class Say
   def initialize(number)
     @ones_place = { 
-                  "00" => "",          "1" => "one", 
+                  "1" => "one", 
                   "2"  => "two",       "3" => "three",
                   "4"  => "four",      "5" => "five",
                   "6"  => "six",       "7" => "seven",
@@ -19,9 +19,7 @@ class Say
                   "8" => "eighty", "9" => "ninety"
                   }
     @number = number
-
     @split_num = split(number)            
-
   end
 
   def in_english
@@ -111,7 +109,6 @@ class Say
   end
 
   def tens_n_ones(num_chunk)
-    # result = ""
     if num_chunk.to_i < 20
       @ones_place[num_chunk.to_i.to_s]
     else
