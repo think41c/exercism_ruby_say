@@ -31,7 +31,6 @@ class Say
 
     flag = true
 
-    puts "The @split_num is #{@split_num}"
     x = ""
     if @number == 0
       return "zero"
@@ -93,9 +92,7 @@ class Say
 
     # 10-99
     ones_group = ""
-    if num[-2].nil?
-      ones_group << ""
-    else
+    if !num[-2].nil?
       ones_group << num[-2]
     end
 
