@@ -36,9 +36,8 @@ class Say
 
     if !@split_num[-4].nil? 
       x << number_feeder(@split_num[-4]) 
-      if number_feeder(@split_num[-4]).length != 0 
-        x << " billion " 
-      end
+      
+      x << " billion " if number_feeder(@split_num[-4]).length != 0 
     end
     
     if !@split_num[-3].nil? 
