@@ -36,7 +36,6 @@ class Say
 
     if !@split_num[-4].nil? 
       x << number_feeder(@split_num[-4]) 
-      
       x << " billion " if number_feeder(@split_num[-4]).length != 0 
     end
     
@@ -53,9 +52,7 @@ class Say
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
       if number_feeder(@split_num[-2]).length == 0
-        if flag == true
-          x = x[0..-2]
-        end
+        x = x[0..-2] if flag == true
       else
         x << " thousand" 
       end
