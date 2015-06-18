@@ -103,11 +103,8 @@ class Say
     if !tens_n_ones(huns_group).nil?
       result << "#{tens_n_ones(huns_group)} hundred"
     end
-
     # Tens place
-    if result.length == 0
-      result << "#{tens_n_ones(ones_group)}"
-    elsif tens_n_ones(ones_group).nil?
+    if result.length == 0 || tens_n_ones(ones_group).nil?
       result << "#{tens_n_ones(ones_group)}"
     else 
       result << " #{tens_n_ones(ones_group)}"
