@@ -65,10 +65,8 @@ class Say
     if !@split_num[-1].nil? 
       if x.length == 0 
         x << number_feeder(@split_num[-1]) 
-      else
-        if number_feeder(@split_num[-1]).length != 0 
+      elsif number_feeder(@split_num[-1]).length != 0
           x << " " + number_feeder(@split_num[-1]) 
-        end
       end
     end
     x
