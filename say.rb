@@ -14,7 +14,7 @@ class Say
                   }
     @tens_place = { 
                   "2" => "twenty", "3" => "thirty",
-                  "4" => "forty", "5" => "fifty",
+                  "4" => "forty",  "5" => "fifty",
                   "6" => "sixty",  "7" => "seventy",
                   "8" => "eighty", "9" => "ninety"
                   }
@@ -94,7 +94,6 @@ class Say
       ones_group << num[-1]
     end
     
-    # Make the number ###############
     # Hundreds place
     if !tens_n_ones(huns_group).nil?
       result << "#{tens_n_ones(huns_group)} hundred"
