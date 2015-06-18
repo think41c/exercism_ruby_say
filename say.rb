@@ -81,33 +81,26 @@ class Say
   end
 
   def number_feeder(num)
-    result = ""  
+    result     = ""  
     huns_group = ""
+    ones_group = ""
+
     # 100-999
-    if num[-3].nil? 
-      huns_group << ""
-    else
+    if !num[-3].nil? 
       huns_group << num[-3]
     end
-
     # 10-99
-    ones_group = ""
     if !num[-2].nil?
       ones_group << num[-2]
     end
-
     # 0-9
-    if num[-1].nil?
-      ones_group << ""
-    else
+    if !num[-1].nil?
       ones_group << num[-1]
     end
     
     # Make the number ###############
     # Hundreds place
-    if tens_n_ones(huns_group).nil?
-      # nothing
-    else
+    if !tens_n_ones(huns_group).nil?
       result << "#{tens_n_ones(huns_group)} hundred"
     end
 
