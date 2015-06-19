@@ -24,7 +24,7 @@ class Say
 
   def in_english
     flag = true
-    x = ""
+    say_num = ""
 
     if @number < 0 || @number >= 1_000_000_000_000 
       raise ArgumentError, "Out of bounds"
@@ -35,37 +35,37 @@ class Say
     end
 
     if !@split_num[-4].nil? 
-      x << number_feeder(@split_num[-4]) 
-      x << " billion " if number_feeder(@split_num[-4]).length != 0 
+      say_num << number_feeder(@split_num[-4]) 
+      say_num << " billion " if number_feeder(@split_num[-4]).length != 0 
     end
     
     if !@split_num[-3].nil? 
-      x << number_feeder(@split_num[-3]) 
+      say_num << number_feeder(@split_num[-3]) 
       if number_feeder(@split_num[-3]).length == 0 
-        x = x[0..-2]
+        say_num = say_num[0..-2]
         flag = false
       else
-        x << " million " 
+        say_num << " million " 
       end
     end
 
     if !@split_num[-2].nil? 
-      x << number_feeder(@split_num[-2]) 
+      say_num << number_feeder(@split_num[-2]) 
       if number_feeder(@split_num[-2]).length == 0
-        x = x[0..-2] if flag == true
+        say_num = say_num[0..-2] if flag == true
       else
-        x << " thousand" 
+        say_num << " thousand" 
       end
     end
 
     if !@split_num[-1].nil? 
-      if x.length == 0 
-        x << number_feeder(@split_num[-1]) 
+      if say_num.length == 0 
+        say_num << number_feeder(@split_num[-1]) 
       elsif number_feeder(@split_num[-1]).length != 0
-        x << " " + number_feeder(@split_num[-1]) 
+        say_num << " " + number_feeder(@split_num[-1]) 
       end
     end
-    x
+    say_num
   end
 
   def number_feeder(num)
