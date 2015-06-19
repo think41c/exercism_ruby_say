@@ -51,13 +51,9 @@ class Say
 
     if !@split_num[-2].nil? 
       x << number_feeder(@split_num[-2]) 
-
-      # This line down here can be condensed for sure...
       if number_feeder(@split_num[-2]).length == 0
         x = x[0..-2] if flag == true
-      ### perhaps -> number_feeder(@split_num[-2]).length == 0 && flag == true
       else
-
         x << " thousand" 
       end
     end
