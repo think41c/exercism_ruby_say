@@ -18,17 +18,20 @@ class Say
                   "6" => "sixty",  "7" => "seventy",
                   "8" => "eighty", "9" => "ninety"
                   }
+    
     @number = number
+    
+    if @number < 0 || @number >= 1_000_000_000_000 
+      raise ArgumentError, "Out of bounds"
+    end
     @split_num = split(number)            
+
   end
 
   def in_english
     flag = true
     say_num = ""
 
-    if @number < 0 || @number >= 1_000_000_000_000 
-      raise ArgumentError, "Out of bounds"
-    end
     
     if @number == 0
       return "zero"
