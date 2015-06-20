@@ -35,8 +35,7 @@ class Say
       return "zero"
     end
 
-    degrees = {-4 => " billion "}
-    p degrees[-4]
+    degrees = {-4 => " billion ", -3 => " million "}
 
     if !@split_num[-4].nil? 
       say_num << number_feeder(@split_num[-4]) 
@@ -49,7 +48,7 @@ class Say
         say_num = say_num[0..-2]
         flag = false
       else
-        say_num << " million " 
+        say_num << degrees[-3]
       end
     end
 
