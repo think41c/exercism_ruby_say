@@ -18,14 +18,12 @@ class Say
                   "6" => "sixty",  "7" => "seventy",
                   "8" => "eighty", "9" => "ninety"
                   }
-    
     @number = number
     
     if @number < 0 || @number >= 1_000_000_000_000 
       raise ArgumentError, "Out of bounds"
     end
     @split_num = split(number)            
-
   end
 
   def in_english
@@ -37,9 +35,12 @@ class Say
       return "zero"
     end
 
+    degrees = {-4 => " billion "}
+    p degrees[-4]
+
     if !@split_num[-4].nil? 
       say_num << number_feeder(@split_num[-4]) 
-      say_num << " billion " if number_feeder(@split_num[-4]).length != 0 
+      say_num << degrees[-4] if number_feeder(@split_num[-4]).length != 0 
     end
     
     if !@split_num[-3].nil? 
@@ -76,6 +77,7 @@ class Say
     huns_group = ""
     ones_group = ""
 
+    counter = 3
     # 100-999
     if !num[-3].nil? 
       huns_group << num[-3]
@@ -103,6 +105,7 @@ class Say
   end
 
   def tens_n_ones(num_chunk)
+    
     if num_chunk.to_i < 20
       @ones_place[num_chunk.to_i.to_s]
     else
@@ -118,3 +121,5 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 end
+
+a = Say.new(340).in_english
