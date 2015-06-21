@@ -76,7 +76,6 @@ class Say
     huns_group = ""
     ones_group = ""
 
-    counter = 3
     # 100-999
     if !num[-3].nil? 
       huns_group << num[-3]
@@ -91,6 +90,8 @@ class Say
     end
     
     # Hundreds place
+    # The hundreds place needs to be extracted out to go with the rest of the degrees
+    # Such that everything can remain uniform in terms of degrees.
     if !tens_n_ones(huns_group).nil?
       result << "#{tens_n_ones(huns_group)} hundred"
     end
@@ -104,7 +105,6 @@ class Say
   end
 
   def tens_n_ones(num_chunk)
-    
     if num_chunk.to_i < 20
       @ones_place[num_chunk.to_i.to_s]
     else
