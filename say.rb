@@ -36,6 +36,10 @@ class Say
       p "#{x} <- Current counter"  
       p "#{@split_num.length} <- length of split_num chunks"
 
+      # Check for nils, and assign 1st, 2nd, and 3rd place. 
+      # When nil places are found, just assign them to a blank string. 
+      # This will allow for full evaluation w/o constantly checking for nil during the logic.
+      
       if !@split_num[x][-3] == nil?
         result = "#{tens_n_ones(@split_num [x][-3])} hundred "
       end
