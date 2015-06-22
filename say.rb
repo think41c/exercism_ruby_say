@@ -1,7 +1,7 @@
 class Say
   def initialize(number)
     @ones_place = { 
-                  "1" => "one", 
+                  "0"  => "zero",      "1" => "one", 
                   "2"  => "two",       "3" => "three",
                   "4"  => "four",      "5" => "five",
                   "6"  => "six",       "7" => "seven",
@@ -35,11 +35,14 @@ class Say
       p "#{degrees[x]} <- Degree of digit, if applicable"
       p "#{x} <- Current counter"  
       p "#{@split_num.length} <- length of split_num chunks"
+
       if !@split_num[x][-3] == nil?
         result = "#{tens_n_ones(@split_num [x][-3])} hundred "
       end
-      result << tens_n_ones(@split_num [x][-2] + @split_num[x][-1])
-      p result
+      p tens_n_ones(@split_num[x])
+
+      # result << tens_n_ones(@split_num [x][-2] + @split_num[x][-1])
+      # p result
       x += 1
     end
   end
@@ -62,4 +65,4 @@ class Say
   end
 end
 
-a = Say.new(99).in_english
+a = Say.new(0).in_english
