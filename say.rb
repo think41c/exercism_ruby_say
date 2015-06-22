@@ -28,7 +28,8 @@ class Say
 
   def in_english
     p @split_num[-1]
-    p tens_n_ones(@split_num[-1])
+    p num_to_eval = @split_num [-1][-2] + @split_num[-1][-1]
+    p tens_n_ones(num_to_eval)
   end
 
   def tens_n_ones(num_chunk)
@@ -48,4 +49,4 @@ class Say
   end
 end
 
-a = Say.new(18).in_english
+a = Say.new(119).in_english
