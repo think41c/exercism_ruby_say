@@ -27,10 +27,20 @@ class Say
   end
 
   def in_english
-    p @split_num[-1]
-    p num_to_eval = @split_num [-1][-2] + @split_num[-1][-1]
-    p tens_n_ones(num_to_eval)
+    x = 0
+    degrees = {1 => "thousand"}
+    until @split_num[x] == nil
+      p "#{@split_num[x]} <- The split_num chunk we're on"
+      p "#{degrees[x]} <- Degree of digit, if applicable"
+      p "#{x} <- Current counter"  
+      p "#{@split_num.length} <- length of split_num chunks"
+      p huns_eval = @split_num [x][-3] 
+      p tens_eval = @split_num [x][-2] + @split_num[x][-1]
+      p tens_n_ones(huns_eval) + " hundred " + tens_n_ones(tens_eval)
+      x += 1
+    end
   end
+
 
   def tens_n_ones(num_chunk)
     if num_chunk.to_i < 20
@@ -49,4 +59,4 @@ class Say
   end
 end
 
-a = Say.new(119).in_english
+a = Say.new(999).in_english
