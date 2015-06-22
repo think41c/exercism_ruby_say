@@ -40,13 +40,12 @@ class Say
         result = "#{tens_n_ones(@split_num [x][-3])} hundred "
       end
       p tens_n_ones(@split_num[x])
-
-      # result << tens_n_ones(@split_num [x][-2] + @split_num[x][-1])
+      p tens_n_ones(@split_num[x][-2])
+      p result << tens_n_ones(@split_num[x][-2] + @split_num[x][-1])
       # p result
       x += 1
     end
   end
-
 
   def tens_n_ones(num_chunk)
     if num_chunk.to_i < 20
@@ -65,4 +64,4 @@ class Say
   end
 end
 
-a = Say.new(0).in_english
+a = Say.new(123).in_english
