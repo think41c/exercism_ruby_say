@@ -27,81 +27,8 @@ class Say
   end
 
   def in_english
-    flag = true
-    say_num = ""
-
-    
-    if @number == 0
-      return "zero"
-    end
-
-    degrees = {-4 => " billion ", -3 => " million ", -2 => " thousand"}
-
-    if !@split_num[-4].nil? 
-      say_num << number_feeder(@split_num[-4]) 
-      say_num << degrees[-4] if number_feeder(@split_num[-4]).length != 0 
-    end
-    
-    if !@split_num[-3].nil? 
-      say_num << number_feeder(@split_num[-3]) 
-      if number_feeder(@split_num[-3]).length == 0 
-        say_num = say_num[0..-2]
-        flag = false
-      else
-        say_num << degrees[-3]
-      end
-    end
-
-    if !@split_num[-2].nil? 
-      say_num << number_feeder(@split_num[-2]) 
-      if number_feeder(@split_num[-2]).length == 0
-        say_num = say_num[0..-2] if flag == true
-      else
-        say_num << degrees[-2]
-      end
-    end
-
-    if !@split_num[-1].nil? 
-      if say_num.length == 0 
-        say_num << number_feeder(@split_num[-1]) 
-      elsif number_feeder(@split_num[-1]).length != 0
-        say_num << " " + number_feeder(@split_num[-1]) 
-      end
-    end
-    say_num
-  end
-
-  def number_feeder(num)
-    result     = ""  
-    huns_group = ""
-    ones_group = ""
-
-    # 100-999
-    if !num[-3].nil? 
-      huns_group << num[-3]
-    end
-    # 10-99
-    if !num[-2].nil?
-      ones_group << num[-2]
-    end
-    # 0-9
-    if !num[-1].nil?
-      ones_group << num[-1]
-    end
-    
-    # Hundreds place
-    # The hundreds place needs to be extracted out to go with the rest of the degrees
-    # Such that everything can remain uniform in terms of degrees.
-    if !tens_n_ones(huns_group).nil?
-      result << "#{tens_n_ones(huns_group)} hundred"
-    end
-    # Tens place
-    if result.length == 0 || tens_n_ones(ones_group).nil?
-      result << "#{tens_n_ones(ones_group)}"
-    else 
-      result << " #{tens_n_ones(ones_group)}"
-    end
-    result
+    p @split_num[-1]
+    p tens_n_ones(@split_num[-1])
   end
 
   def tens_n_ones(num_chunk)
@@ -121,4 +48,4 @@ class Say
   end
 end
 
-a = Say.new(340).in_english
+a = Say.new(342).in_english
