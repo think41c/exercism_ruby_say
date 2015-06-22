@@ -33,7 +33,7 @@ class Say
 
   def tens_n_ones(num_chunk)
     if num_chunk.to_i < 20
-      @ones_place[num_chunk.to_i.to_s]
+      @ones_place[num_chunk.to_s]
     else
       if num_chunk[-1] == "0"
         answer = "#{@tens_place[num_chunk[-2]]}"
