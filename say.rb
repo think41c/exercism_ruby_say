@@ -1,6 +1,6 @@
 class Say
   def initialize(number)
-    @ones_place = { 
+    @ones_place = {""  => "",
                   "0"  => "zero",      "1" => "one", 
                   "2"  => "two",       "3" => "three",
                   "4"  => "four",      "5" => "five",
@@ -54,12 +54,8 @@ class Say
         ones = "" 
       end
 
-      if !@split_num[x][-3] == nil?
-        result = "#{tens_n_ones(@split_num [x][-3])} hundred "
-      end
-      p tens_n_ones(huns)
-      p tens_n_ones(tens)
-      p tens_n_ones(ones)
+      num_to_send = huns + tens + ones
+      p tens_n_ones(num_to_send)
       x += 1
     end
   end
@@ -81,4 +77,4 @@ class Say
   end
 end
 
-a = Say.new(9).in_english
+a = Say.new(19).in_english
