@@ -1,6 +1,6 @@
 class Say
   def initialize(number)
-    @ones_place = {""  => "",
+    @ones_place = {""  => "",         "00" => "", 
                   "0"  => "zero",      "1" => "one", 
                   "2"  => "two",       "3" => "three",
                   "4"  => "four",      "5" => "five",
@@ -54,8 +54,14 @@ class Say
         ones = "" 
       end
 
-      num_to_send = huns + tens + ones
-      p tens_n_ones(num_to_send)
+      hun_spot = tens_n_ones(huns)
+      if hun_spot.length > 1 
+        huns = hun_spot + " hundred "        
+      end
+      p huns
+
+      num_to_send = tens + ones
+      p huns + tens_n_ones(num_to_send)
       x += 1
     end
   end
@@ -77,4 +83,4 @@ class Say
   end
 end
 
-a = Say.new(19).in_english
+a = Say.new(110).in_english
