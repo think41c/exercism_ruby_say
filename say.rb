@@ -42,11 +42,21 @@ class Say
       huns = ""
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
+      else
+        huns = "" 
       end
-      tens_n_ones(huns)
-      second = 
-      third  =
 
+      if !@split_num[x][-2] == nil? 
+        tens = @split_num[x][-2]
+      else
+        tens = "" 
+      end
+
+      if !@split_num[x][-1] == nil? 
+        ones = @split_num[x][-1]
+      else
+        ones = "" 
+      end
 
       if !@split_num[x][-3] == nil?
         result = "#{tens_n_ones(@split_num [x][-3])} hundred "
@@ -76,4 +86,4 @@ class Say
   end
 end
 
-a = Say.new(23).in_english
+a = Say.new(113).in_english
