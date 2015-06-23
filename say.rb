@@ -36,10 +36,6 @@ class Say
       p "#{x} <- Current counter"  
       p "#{@split_num.length} <- length of split_num chunks"
 
-      # Check for nils, and assign 1st, 2nd, and 3rd place. 
-      # When nil places are found, just assign them to a blank string. 
-      # This will allow for full evaluation w/o constantly checking for nil during the logic.
-      huns = ""
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
       else
@@ -61,10 +57,9 @@ class Say
       if !@split_num[x][-3] == nil?
         result = "#{tens_n_ones(@split_num [x][-3])} hundred "
       end
-      p tens_n_ones(@split_num[x])
-      p tens_n_ones(@split_num[x][-2])
-      p result << tens_n_ones(@split_num[x][-2] + @split_num[x][-1])
-      # p result
+      p tens_n_ones(huns)
+      p tens_n_ones(tens)
+      p tens_n_ones(ones)
       x += 1
     end
   end
@@ -86,4 +81,4 @@ class Say
   end
 end
 
-a = Say.new(113).in_english
+a = Say.new(9).in_english
