@@ -29,12 +29,13 @@ class Say
   def in_english
     x = 0
     result = ""
+    xxx = ""
     degrees = {1 => "thousand"}
     until @split_num[x] == nil
-      p "#{@split_num[x]} <- The split_num chunk we're on"
-      p "#{degrees[x]} <- Degree of digit, if applicable"
-      p "#{x} <- Current counter"  
-      p "#{@split_num.length} <- length of split_num chunks"
+      # p "#{@split_num[x]} <- The split_num chunk we're on"
+      # p "#{degrees[x]} <- Degree of digit, if applicable"
+      # p "#{x} <- Current counter"  
+      # p "#{@split_num.length} <- length of split_num chunks"
 
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
@@ -55,14 +56,18 @@ class Say
       end
 
       if tens_n_ones(huns).length > 1 
-        huns = tens_n_ones(huns) + " hundred "        
+        huns = tens_n_ones(huns) + " hundred"        
       end
 
       ### 
-      p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
+      # p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
       ###
-      p huns + tens_n_ones(tens + ones)
-      
+      if huns.length > 1 && tens_n_ones(tens + ones).length > 1
+        xxx = huns + " " + tens_n_ones(tens + ones)
+      end
+
+      p huns 
+
       x += 1
     end
   end
@@ -72,11 +77,8 @@ class Say
     if num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
-      p @ones_place[num_chunk.to_i.to_s]
+      @ones_place[num_chunk.to_i.to_s]
     else
-      # if num_chunk[-1] == "0" && num_chunk[-2] == "0"
-        # p "gsdakj"
-        # answer = "#{@tens_place[num_chunk[-2]]}"[0..-4]
       if num_chunk[-1] == "0"
         answer = "#{@tens_place[num_chunk[-2]]}"
       else
