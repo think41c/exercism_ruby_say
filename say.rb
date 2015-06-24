@@ -32,10 +32,10 @@ class Say
     xxx = ""
     degrees = {1 => "thousand"}
     until @split_num[x] == nil
-      # p "#{@split_num[x]} <- The split_num chunk we're on"
-      # p "#{degrees[x]} <- Degree of digit, if applicable"
-      # p "#{x} <- Current counter"  
-      # p "#{@split_num.length} <- length of split_num chunks"
+      p "#{@split_num[x]} <- The split_num chunk we're on"
+      p "#{degrees[x]} <- Degree of digit, if applicable"
+      p "#{x} <- Current counter"  
+      p "#{@split_num.length} <- length of split_num chunks"
 
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
@@ -55,19 +55,15 @@ class Say
         ones = "" 
       end
 
-      if tens_n_ones(huns).length > 1 
+      if tens_n_ones(huns).length > 2 && tens_n_ones(huns) != "zero" 
         huns = tens_n_ones(huns) + " hundred"        
+        if tens_n_ones(tens + ones).length > 1
+          huns << " "
+        end
       end
 
-      ### 
-      # p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
-      ###
-      if huns.length > 1 && tens_n_ones(tens + ones).length > 1
-        xxx = huns + " " + tens_n_ones(tens + ones)
-      end
-
-      p huns 
-
+      p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
+      p huns + tens_n_ones(tens + ones)
       x += 1
     end
   end
@@ -92,4 +88,4 @@ class Say
   end
 end
 
-a = Say.new(100).in_english
+a = Say.new(101).in_english
