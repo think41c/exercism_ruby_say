@@ -54,22 +54,22 @@ class Say
         ones = "" 
       end
 
-      hun_spot = tens_n_ones(huns)
-      if hun_spot.length > 1 
-        huns = hun_spot + " hundred "        
+      if tens_n_ones(huns).length > 1 
+        huns = tens_n_ones(huns) + " hundred "        
       end
-      p huns
 
-      num_to_send = tens + ones
-      p huns + tens_n_ones(num_to_send)
+      p huns + tens_n_ones(tens + ones)
       x += 1
     end
   end
 
   def tens_n_ones(num_chunk)
-    if num_chunk.to_i < 20
+    if num_chunk.to_i < 20# && num_chunk.to_i > 1
       @ones_place[num_chunk]
     else
+      # if num_chunk[-1] == "0" && num_chunk[-2] == "0"
+        # p "gsdakj"
+        # answer = "#{@tens_place[num_chunk[-2]]}"[0..-4]
       if num_chunk[-1] == "0"
         answer = "#{@tens_place[num_chunk[-2]]}"
       else
@@ -83,4 +83,4 @@ class Say
   end
 end
 
-a = Say.new(110).in_english
+a = Say.new(100).in_english
