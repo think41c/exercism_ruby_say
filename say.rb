@@ -58,10 +58,10 @@ class Say
         huns = tens_n_ones(huns) + " hundred "        
       end
 
-      p huns 
-      p tens
-      p ones
-      p tens_n_ones(tens + ones)
+      ### 
+      p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
+      ###
+      p huns + tens_n_ones(tens + ones)
       
       x += 1
     end
@@ -69,7 +69,9 @@ class Say
 
   def tens_n_ones(num_chunk)
     p "The num_chunk is #{num_chunk}"
-    if num_chunk.to_i < 20
+    if num_chunk == "00"
+      answer = ""
+    elsif num_chunk.to_i < 20
       p @ones_place[num_chunk.to_i.to_s]
     else
       # if num_chunk[-1] == "0" && num_chunk[-2] == "0"
@@ -88,4 +90,4 @@ class Say
   end
 end
 
-a = Say.new(119).in_english
+a = Say.new(100).in_english
