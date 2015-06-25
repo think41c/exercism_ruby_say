@@ -27,6 +27,13 @@ class Say
   end
 
   def in_english
+    # This needs to be dealing with the getting the 3 digit number
+    # and then adding the degree to it. 
+    three_digit
+  end
+
+
+  def three_digit
     x            = 0
     result       = ""
     final_result = ""
@@ -91,5 +98,5 @@ class Say
   end
 end
 
-# a = Say.new(0).in_english
+p a = Say.new(111).in_english
 # a
