@@ -98,5 +98,5 @@ class Say
   end
 end
 
-p a = Say.new(111).in_english
+p a = Say.new(123322).in_english
 # a
