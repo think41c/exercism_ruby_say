@@ -88,4 +88,4 @@ class Say
   end
 end
 
-a = Say.new(101).in_english
+a = Say.new(102).in_english
