@@ -64,7 +64,9 @@ class Say
       end
 
       p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
+      p huns + tens_n_ones(tens + ones)
       p final_result << huns + tens_n_ones(tens + ones)
+      
       x += 1
     end
     final_result 
@@ -75,7 +77,7 @@ class Say
     if num_chunk == "000" || num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
-      @ones_place[num_chunk.to_i.to_s]
+        @ones_place[num_chunk.to_i.to_s]
     else
       if num_chunk[-1] == "0"
         answer = "#{@tens_place[num_chunk[-2]]}"
@@ -90,5 +92,5 @@ class Say
   end
 end
 
-a = Say.new(1550).in_english
+a = Say.new(100).in_english
 p a
