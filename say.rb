@@ -27,10 +27,11 @@ class Say
   end
 
   def in_english
-    x = 0
-    result = ""
-    xxx = ""
-    degrees = {1 => "thousand"}
+    x            = 0
+    result       = ""
+    xxx          = ""
+    final_result = ""
+    degrees = {0 => "thousand"}
     until @split_num[x] == nil
       p "#{@split_num[x]} <- The split_num chunk we're on"
       p "#{degrees[x]} <- Degree of digit, if applicable"
@@ -46,7 +47,7 @@ class Say
       if !@split_num[x][-2] == nil? 
         tens = @split_num[x][-2]
       else
-        tens = "" 
+        tens = "0" 
       end
 
       if !@split_num[x][-1] == nil? 
@@ -63,14 +64,15 @@ class Say
       end
 
       p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
-      p huns + tens_n_ones(tens + ones)
+      p final_result << huns + tens_n_ones(tens + ones)
       x += 1
     end
+    final_result 
   end
 
   def tens_n_ones(num_chunk)
     p "The num_chunk is #{num_chunk}"
-    if num_chunk == "00"
+    if num_chunk == "000" || num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
       @ones_place[num_chunk.to_i.to_s]
@@ -88,4 +90,5 @@ class Say
   end
 end
 
-a = Say.new(102).in_english
+a = Say.new(1550).in_english
+p a
