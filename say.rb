@@ -37,7 +37,7 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees = {0 => "thousand"}
+    degrees   = {0 => "thousand"}
     until @split_num[x] == nil
       # p "#{@split_num[x]} <- The split_num chunk we're on"
       # p "#{degrees[x]} <- Degree of digit, if applicable"
@@ -69,8 +69,8 @@ class Say
         end
       end
 
-      p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
-      p huns + tens_n_ones(tens + ones)
+      # p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
+      # p huns + tens_n_ones(tens + ones)
       p final_result << huns + tens_n_ones(tens + ones)
       
       x += 1
@@ -98,5 +98,5 @@ class Say
   end
 end
 
-p a = Say.new(123322).in_english
+a = Say.new(123322).in_english
 # a
