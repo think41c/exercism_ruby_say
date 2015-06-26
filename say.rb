@@ -69,9 +69,15 @@ class Say
         end
       end
 
+
       # p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
       # p huns + tens_n_ones(tens + ones)
-      p final_result << huns + tens_n_ones(tens + ones)
+      p final_result << huns + tens_n_ones(tens + ones) 
+      
+      if !@split_num[x+1].nil?
+        final_result << " "
+      end
+
       
       x += 1
     end
