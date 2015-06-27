@@ -37,7 +37,8 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees      = {0 => "thousand"}
+    degrees      = {2 => " thousand", 3=> " million", 4=> " billion"}
+    p degrees[@split_num.length]
     until @split_num[x] == nil
       # p "#{@split_num[x]} <- The split_num chunk we're on"
       # p "#{degrees[x]} <- Degree of digit, if applicable"
@@ -80,7 +81,9 @@ class Say
       # p huns + tens_n_ones(tens + ones)
       p final_result << huns + tens_n_ones(tens + ones) 
       
-      if @split_num.length == 2
+
+      if x == 0
+        stick = degrees[@split_num.length]
          # If x is zero, and split_num.length is equal to 
          # 1 - Then nothing.
          # 2 - Then thousand.
@@ -95,8 +98,8 @@ class Say
          # 4 - Then billion.
          # If x is 3, and split_num.length is equal to 
          # 4 - Then billion.
-         
-         final_result << " thousand"
+
+         final_result << stick
       end
 
 
