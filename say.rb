@@ -48,7 +48,8 @@ class Say
       # point. If x is [123,456,789] then x[0] will be the millions degree. 
       # Instead we could say if x.length == 3, then start with millions, then 
       # thousands. 
-      
+
+
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
       else
@@ -79,6 +80,11 @@ class Say
       # p huns + tens_n_ones(tens + ones)
       p final_result << huns + tens_n_ones(tens + ones) 
       
+      if @split_num.length == 2
+         final_result << " thousand"
+      end
+
+
       if !@split_num[x+1].nil?
         final_result << " "
       end
