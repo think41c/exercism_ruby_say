@@ -37,13 +37,18 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees   = {0 => "thousand"}
+    degrees      = {0 => "thousand"}
     until @split_num[x] == nil
       # p "#{@split_num[x]} <- The split_num chunk we're on"
       # p "#{degrees[x]} <- Degree of digit, if applicable"
       # p "#{x} <- Current counter"  
       # p "#{@split_num.length} <- length of split_num chunks"
 
+      # Degrees, as a variable, as is will not work. 0 is just the starting
+      # point. If x is [123,456,789] then x[0] will be the millions degree. 
+      # Instead we could say if x.length == 3, then start with millions, then 
+      # thousands. 
+      
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
       else
