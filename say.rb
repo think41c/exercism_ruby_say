@@ -81,6 +81,21 @@ class Say
       p final_result << huns + tens_n_ones(tens + ones) 
       
       if @split_num.length == 2
+         # If x is zero, and split_num.length is equal to 
+         # 1 - Then nothing.
+         # 2 - Then thousand.
+         # 3 - Then million.
+         # 4 - Then billion.
+         # If x is 1, and split_num.length is equal to 
+         # 2 - Then thousand.
+         # 3 - Then million.
+         # 4 - Then billion.
+         # If x is 2, and split_num.length is equal to 
+         # 3 - Then million.
+         # 4 - Then billion.
+         # If x is 3, and split_num.length is equal to 
+         # 4 - Then billion.
+         
          final_result << " thousand"
       end
 
@@ -115,5 +130,5 @@ class Say
   end
 end
 
-a = Say.new(123322).in_english
-# a
+a = Say.new(1234).in_english
+p a
