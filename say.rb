@@ -30,7 +30,8 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees      = {1 => "", 2=> "thousand", 3=> " million"}
+    degrees      = {1 => "", 2=> "thousand ", 3=> " million"}
+    flag = true
 
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
@@ -58,13 +59,14 @@ class Say
         end
       end
 
+    
       if x == x && @split_num.length > x  
         if !degrees[x+1].nil?
           if huns == "0" && tens == "0" && ones == "0"
             stick = degrees[x]
           else
             degree_of_num = @split_num.length
-            stick = degrees[degree_of_num] + " "
+            stick         = degrees[degree_of_num]
             degree_of_num += 1
           end
         else
@@ -72,18 +74,19 @@ class Say
         end
       end
 
-      final_result << stick
-
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
+        final_result << stick
         final_result << huns + tens_n_ones(tens + ones) 
+        p final_result
       end
 
       if !@split_num[x+1].nil?
         final_result << " "
       end
-
+      
+      p "#{final_result} <- Final result"
       x += 1
     end
     final_result 
@@ -108,5 +111,5 @@ class Say
   end
 end
 
-a = Say.new(100).in_english
+a = Say.new(1234).in_english
 p a
