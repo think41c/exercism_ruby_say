@@ -48,23 +48,28 @@ class SayTest < Minitest::Test
   end
 
   def test_1_million
+    skip
     assert_equal 'one million', Say.new(10**6).in_english
   end
 
   def test_1_million_and_some_crumbs
+    skip
     assert_equal 'one million two', Say.new(1_000_002).in_english
   end
 
   def test_1_million_2_thousand_345
+    skip
     expected = 'one million two thousand three hundred forty-five'
     assert_equal expected, Say.new(1_002_345).in_english
   end
 
   def test_1_billion
+    skip
     assert_equal 'one billion', Say.new(10**9).in_english
   end
 
   def test_really_big_number
+    skip
     expected = 'nine hundred eighty-seven billion '
     expected << 'six hundred fifty-four million '
     expected << 'three hundred twenty-one thousand '

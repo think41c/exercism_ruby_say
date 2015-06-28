@@ -61,11 +61,7 @@ class Say
         end
       end
 
-
-
       if x == x && @split_num.length > x  
-
-        puts @split_num.length 
         if !degrees[x+1].nil?
           stick = degrees[x+1] + " "
         else
@@ -92,11 +88,10 @@ class Say
   end
 
   def tens_n_ones(num_chunk)
-    p "The num_chunk is #{num_chunk}"
     if num_chunk == "000" || num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
-        @ones_place[num_chunk.to_i.to_s]
+      @ones_place[num_chunk.to_i.to_s]
     else
       if num_chunk[-1] == "0"
         answer = "#{@tens_place[num_chunk[-2]]}"
@@ -111,5 +106,5 @@ class Say
   end
 end
 
-a = Say.new(1234679).in_english
+a = Say.new(234679).in_english
 p a
