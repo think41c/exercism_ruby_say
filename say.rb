@@ -34,7 +34,7 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees      = {2 => "thousand ", 3=> " million", 4=> " billion"}
+    degrees      = {2 => "thousand", 3=> " million", 4=> " billion"}
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
@@ -98,10 +98,8 @@ class Say
         p 'here'
       else
         num_chunk_to_send = tens_n_ones(tens + ones) 
+        final_result << huns + num_chunk_to_send
       end
-      p huns
-      # Why is huns 0 when the number to translate is 1000.
-      final_result << huns + num_chunk_to_send
 
       if !@split_num[x+1].nil?
         final_result << " "
