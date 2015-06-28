@@ -27,30 +27,15 @@ class Say
   end
 
   def in_english
-    # This needs to be dealing with the getting the 3 digit number
-    # and then adding the degree to it. 
     three_digit
   end
-
 
   def three_digit
     x            = 0
     result       = ""
     final_result = ""
     degrees      = {2 => "thousand ", 3=> " million", 4=> " billion"}
-    p degrees[@split_num.length]
     until @split_num[x] == nil
-      # p "#{@split_num[x]} <- The split_num chunk we're on"
-      # p "#{degrees[x]} <- Degree of digit, if applicable"
-      # p "#{x} <- Current counter"  
-      # p "#{@split_num.length} <- length of split_num chunks"
-
-      # Degrees, as a variable, as is will not work. 0 is just the starting
-      # point. If x is [123,456,789] then x[0] will be the millions degree. 
-      # Instead we could say if x.length == 3, then start with millions, then 
-      # thousands. 
-
-
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
       else
@@ -76,11 +61,8 @@ class Say
         end
       end
 
-
-      # p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
-      # p huns + tens_n_ones(tens + ones)
       if x == x && @split_num.length > x  
-        # split_num.length is always +1 of x and < 5.
+
         puts @split_num.length 
         if !degrees[x+1].nil?
           stick = degrees[x+1]
@@ -88,6 +70,7 @@ class Say
           stick = ""
         end
 
+        # split_num.length is always +1 of x and < 5.
         # If x is zero, and split_num.length is equal to 
         # 1 - Then nothing.
         # 2 - Then thousand.
@@ -102,28 +85,34 @@ class Say
         # 4 - Then billion.
         # If x is 3, and split_num.length is equal to 
         # 4 - Then billion.
-
-         
       end
 
       final_result << stick
-      p final_result << huns + tens_n_ones(tens + ones) 
-      
-
-      
+      p final_result
+      p final_result
+      p final_result
+      p final_result
+      #Is it 3 0's? 
+      if huns == "0" && tens == "0" && ones == "0"
+        num_chunk_to_send = "" 
+        p 'here'
+      else
+        num_chunk_to_send = tens_n_ones(tens + ones) 
+      end
+      p huns
+      # Why is huns 0 when the number to translate is 1000.
+      final_result << huns + num_chunk_to_send
 
       if !@split_num[x+1].nil?
         final_result << " "
       end
-
-      
       x += 1
     end
     final_result 
   end
 
   def tens_n_ones(num_chunk)
-    # p "The num_chunk is #{num_chunk}"
+    p "The num_chunk is #{num_chunk}"
     if num_chunk == "000" || num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
@@ -142,5 +131,5 @@ class Say
   end
 end
 
-a = Say.new(1234).in_english
+a = Say.new(1000).in_english
 p a
