@@ -64,7 +64,7 @@ class Say
       if x == x && @split_num.length > x  
         if !degrees[x+1].nil?
           if huns == "0" && tens == "0" && ones == "0"
-            stick = degrees[x+1] 
+            stick = degrees[x+1]
           else
             stick = degrees[x+1] + " "
           end
@@ -73,7 +73,10 @@ class Say
         end
       end
 
+      puts "#{final_result}<- final_result"
+
       final_result << stick
+      puts "#{final_result}<- final_result after stick"
 
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
@@ -110,5 +113,5 @@ class Say
   end
 end
 
-a = Say.new(100000).in_english
+a = Say.new(1234567).in_english
 p a
