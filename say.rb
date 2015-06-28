@@ -67,23 +67,21 @@ class Say
 
         puts @split_num.length 
         if !degrees[x+1].nil?
-          stick = degrees[x+1]
+          stick = degrees[x+1] + " "
         else
           stick = ""
         end
       end
 
-      final_result << stick + " "
+      final_result << stick
 
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
-        p 'here'
       else
         num_chunk_to_send = tens_n_ones(tens + ones) 
         final_result << huns + num_chunk_to_send
       end
-      p @split_num.length
-      p x
+
       if !@split_num[x+1].nil?
         final_result << " "
       end
