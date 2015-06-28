@@ -27,14 +27,11 @@ class Say
   end
 
   def in_english
-    three_digit
-  end
-
-  def three_digit
     x            = 0
     result       = ""
     final_result = ""
-    degrees      = {2 => "million", 3=> " thousand", 4=> " billion"}
+    degrees      = {1 => "", 2=> "thousand", 3=> " million"}
+
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
@@ -64,25 +61,23 @@ class Say
       if x == x && @split_num.length > x  
         if !degrees[x+1].nil?
           if huns == "0" && tens == "0" && ones == "0"
-            stick = degrees[x+1]
+            stick = degrees[x]
           else
-            p "fasjdkl #{degrees[x+1]}"
-            stick = degrees[x+1] + " "
+            degree_of_num = @split_num.length
+            stick = degrees[degree_of_num] + " "
+            degree_of_num += 1
           end
         else
           stick = ""
         end
       end
 
-      puts "#{final_result}<- final_result"
       final_result << stick
-      puts "#{final_result}<- final_result after stick"
 
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
-        num_chunk_to_send = tens_n_ones(tens + ones) 
-        final_result << huns + num_chunk_to_send
+        final_result << huns + tens_n_ones(tens + ones) 
       end
 
       if !@split_num[x+1].nil?
@@ -113,5 +108,5 @@ class Say
   end
 end
 
-a = Say.new(1234567).in_english
+a = Say.new(100).in_english
 p a
