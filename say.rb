@@ -34,7 +34,7 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees      = {2 => "thousand", 3=> " million", 4=> " billion"}
+    degrees      = {2 => "million", 3=> " thousand", 4=> " billion"}
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
         huns = @split_num[x][-3]
@@ -66,6 +66,7 @@ class Say
           if huns == "0" && tens == "0" && ones == "0"
             stick = degrees[x+1]
           else
+            p "fasjdkl #{degrees[x+1]}"
             stick = degrees[x+1] + " "
           end
         else
@@ -74,7 +75,6 @@ class Say
       end
 
       puts "#{final_result}<- final_result"
-
       final_result << stick
       puts "#{final_result}<- final_result after stick"
 
