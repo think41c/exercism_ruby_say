@@ -79,12 +79,15 @@ class Say
 
       # p "huns -> #{huns}, tens -> #{tens}, ones -> #{ones}"
       # p huns + tens_n_ones(tens + ones)
-      p final_result << huns + tens_n_ones(tens + ones) 
-      
-
-      if x == x && split_num.length > x  
+      if x == x && @split_num.length > x  
         # split_num.length is always +1 of x and < 5.
-        stick = degrees[@split_num.length+1]
+        puts @split_num.length 
+        if !degrees[x+1].nil?
+          stick = degrees[x+1]
+        else
+          stick = ""
+        end
+
         # If x is zero, and split_num.length is equal to 
         # 1 - Then nothing.
         # 2 - Then thousand.
@@ -98,11 +101,16 @@ class Say
         # 3 - Then million.
         # 4 - Then billion.
         # If x is 3, and split_num.length is equal to 
- # 4 - Then billion.
+        # 4 - Then billion.
 
-         final_result << stick
+         
       end
 
+      final_result << stick
+      p final_result << huns + tens_n_ones(tens + ones) 
+      
+
+      
 
       if !@split_num[x+1].nil?
         final_result << " "
