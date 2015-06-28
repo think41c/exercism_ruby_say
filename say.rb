@@ -82,22 +82,23 @@ class Say
       p final_result << huns + tens_n_ones(tens + ones) 
       
 
-      if x == 0
-        stick = degrees[@split_num.length]
-         # If x is zero, and split_num.length is equal to 
-         # 1 - Then nothing.
-         # 2 - Then thousand.
-         # 3 - Then million.
-         # 4 - Then billion.
-         # If x is 1, and split_num.length is equal to 
-         # 2 - Then thousand.
-         # 3 - Then million.
-         # 4 - Then billion.
-         # If x is 2, and split_num.length is equal to 
-         # 3 - Then million.
-         # 4 - Then billion.
-         # If x is 3, and split_num.length is equal to 
-         # 4 - Then billion.
+      if x == x && split_num.length > x  
+        # split_num.length is always +1 of x and < 5.
+        stick = degrees[@split_num.length+1]
+        # If x is zero, and split_num.length is equal to 
+        # 1 - Then nothing.
+        # 2 - Then thousand.
+        # 3 - Then million.
+        # 4 - Then billion.
+        # If x is 1, and split_num.length is equal to 
+        # 2 - Then thousand.
+        # 3 - Then million.
+        # 4 - Then billion.
+        # If x is 2, and split_num.length is equal to 
+        # 3 - Then million.
+        # 4 - Then billion.
+        # If x is 3, and split_num.length is equal to 
+ # 4 - Then billion.
 
          final_result << stick
       end
