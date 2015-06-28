@@ -37,7 +37,7 @@ class Say
     x            = 0
     result       = ""
     final_result = ""
-    degrees      = {2 => " thousand", 3=> " million", 4=> " billion"}
+    degrees      = {2 => "thousand ", 3=> " million", 4=> " billion"}
     p degrees[@split_num.length]
     until @split_num[x] == nil
       # p "#{@split_num[x]} <- The split_num chunk we're on"
