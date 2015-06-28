@@ -61,6 +61,8 @@ class Say
         end
       end
 
+
+
       if x == x && @split_num.length > x  
 
         puts @split_num.length 
@@ -69,30 +71,10 @@ class Say
         else
           stick = ""
         end
-
-        # split_num.length is always +1 of x and < 5.
-        # If x is zero, and split_num.length is equal to 
-        # 1 - Then nothing.
-        # 2 - Then thousand.
-        # 3 - Then million.
-        # 4 - Then billion.
-        # If x is 1, and split_num.length is equal to 
-        # 2 - Then thousand.
-        # 3 - Then million.
-        # 4 - Then billion.
-        # If x is 2, and split_num.length is equal to 
-        # 3 - Then million.
-        # 4 - Then billion.
-        # If x is 3, and split_num.length is equal to 
-        # 4 - Then billion.
       end
 
-      final_result << stick
-      p final_result
-      p final_result
-      p final_result
-      p final_result
-      #Is it 3 0's? 
+      final_result << stick + " "
+
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
         p 'here'
@@ -100,10 +82,12 @@ class Say
         num_chunk_to_send = tens_n_ones(tens + ones) 
         final_result << huns + num_chunk_to_send
       end
-
+      p @split_num.length
+      p x
       if !@split_num[x+1].nil?
         final_result << " "
       end
+
       x += 1
     end
     final_result 
@@ -129,5 +113,5 @@ class Say
   end
 end
 
-a = Say.new(1000).in_english
+a = Say.new(121400).in_english
 p a
