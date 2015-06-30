@@ -80,9 +80,7 @@ class Say
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
-        p "#{stick} stick, -#{huns}-huns, -> #{tens_n_ones(tens + ones)}"
-        # final_result << stick + huns + tens_n_ones(tens + ones) 
-        final_result << tens_n_ones(tens + ones) + huns + stick 
+        final_result << stick + huns + tens_n_ones(tens + ones) 
       end
 
       space_for_next_degree(x)
