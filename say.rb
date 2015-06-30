@@ -77,9 +77,7 @@ class Say
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
-        final_result << stick
-        final_result << huns + tens_n_ones(tens + ones) 
-        # p final_result
+        final_result << stick + huns + tens_n_ones(tens + ones) 
       end
 
       if !@split_num[x+1].nil?
