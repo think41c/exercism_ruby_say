@@ -19,19 +19,23 @@ class Say
                   "8" => "eighty", "9" => "ninety"
                   }
     @number = number
-    
-    if @number < 0 || @number >= 1_000_000_000_000 
+    bounds_test(number)
+  end
+
+  def bounds_test(num_to_test)
+    if num_to_test < 0 || num_to_test >= 1_000_000_000_000 
       raise ArgumentError, "Out of bounds"
     end
-    @split_num = split(number)            
+    @split_num = split(num_to_test)            
   end
+
 
   def in_english
     x            = 0
     result       = ""
     final_result = ""
     degrees      = {1 => "", 2=> "thousand ", 3=> " million"}
-    flag = true
+    flag         = true
 
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
