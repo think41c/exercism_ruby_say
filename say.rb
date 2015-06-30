@@ -63,7 +63,6 @@ class Say
         end
       end
 
-    
       if x == x && @split_num.length > x  
         if !degrees[x+1].nil?
           if huns == "0" && tens == "0" && ones == "0"
@@ -81,13 +80,13 @@ class Say
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
-        final_result << stick + huns + tens_n_ones(tens + ones) 
+        p "#{stick} stick, -#{huns}-huns, -> #{tens_n_ones(tens + ones)}"
+        # final_result << stick + huns + tens_n_ones(tens + ones) 
+        final_result << tens_n_ones(tens + ones) + huns + stick 
       end
 
-      if !@split_num[x+1].nil?
-        final_result << " "
-      end
-      
+      space_for_next_degree(x)
+
       p "#{final_result} <- Final result"
       x += 1
     end
@@ -111,7 +110,14 @@ class Say
   def split(num)
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
+
+  def space_for_next_degree(x)
+    if !@split_num[x+1].nil?
+      final_result << " "
+    end
+  end
+      
 end
 
-a = Say.new(1234).in_english
+a = Say.new(119).in_english
 p a
