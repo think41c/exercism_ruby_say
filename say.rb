@@ -1,3 +1,5 @@
+require 'pry'
+
 class Say
   def initialize(number)
     @ones_place = {""  => "",         "00" => "", 
@@ -20,6 +22,7 @@ class Say
                   }
     @number = number
     bounds_test(number)
+
   end
 
   def bounds_test(num_to_test)
@@ -31,6 +34,7 @@ class Say
 
 
   def in_english
+    # binding.prybinding.pry
     x            = 0
     result       = ""
     @final_result = ""
@@ -72,6 +76,7 @@ class Say
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
+        if huns == "0" then huns = "" end
         @final_result << huns + tens_n_ones(tens + ones) 
       end
 
