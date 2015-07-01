@@ -79,7 +79,7 @@ class Say
       else
         final_result << stick
         final_result << huns + tens_n_ones(tens + ones) 
-        p final_result
+        # p final_result
       end
 
       if !@split_num[x+1].nil?
