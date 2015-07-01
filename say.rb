@@ -73,6 +73,8 @@ class Say
         # if you test for making sure that the tens_n_ones result is > 1 then 
           # add the degree like 'thousand'
           # otherwise, do NOT add the degree.
+        # OR i could test to see if all the numbers are 0's, and if so, to ignore adding a degree.
+
         stick = degrees[deg]
         @final_result << stick
         deg -= 1
