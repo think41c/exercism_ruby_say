@@ -63,7 +63,7 @@ class Say
         end
       end
 
-      if x == x && @split_num.length > x  
+      if @split_num.length > x  
         if !degrees[x+1].nil?
           if huns == "0" && tens == "0" && ones == "0"
             stick = degrees[x]
@@ -79,8 +79,9 @@ class Say
 
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
+        p "#{@final_result} fsdjak"
       else
-        @final_result << stick + huns + tens_n_ones(tens + ones) 
+        @final_result << huns + tens_n_ones(tens + ones) 
       end
 
       space_for_next_degree(x)
@@ -117,5 +118,5 @@ class Say
       
 end
 
-a = Say.new(1000).in_english
+a = Say.new(1999).in_english
 p a
