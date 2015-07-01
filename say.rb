@@ -33,7 +33,7 @@ class Say
   def in_english
     x            = 0
     result       = ""
-    final_result = ""
+    @final_result = ""
     degrees      = {1 => "", 2=> "thousand ", 3=> " million"}
     flag         = true
 
@@ -80,15 +80,15 @@ class Say
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
-        final_result << stick + huns + tens_n_ones(tens + ones) 
+        @final_result << stick + huns + tens_n_ones(tens + ones) 
       end
 
       space_for_next_degree(x)
 
-      p "#{final_result} <- Final result"
+      p "#{@final_result} <- Final result"
       x += 1
     end
-    final_result 
+    @final_result 
   end
 
   def tens_n_ones(num_chunk)
@@ -111,11 +111,11 @@ class Say
 
   def space_for_next_degree(x)
     if !@split_num[x+1].nil?
-      final_result << " "
+      @final_result << " "
     end
   end
       
 end
 
-a = Say.new(119).in_english
+a = Say.new(1000).in_english
 p a
