@@ -63,28 +63,12 @@ class Say
         end
       end
 
-      # if @split_num.length > x  
-      #   if !degrees[x+1].nil?
-      #     if huns == "0" && tens == "0" && ones == "0"
-      #       stick = degrees[x]
-      #     else
-      #       degree_of_num = @split_num.length
-      #       stick         = degrees[degree_of_num]
-      #       degree_of_num += 1
-      #     end
-      #   else
-      #     p "never"
-      #     stick = ""
-      #   end
-      # end
-
       if x > 0 
         @final_result << degrees[x+1]
       else
         stick = ""
       end
       
-
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
         p "#{@final_result} fsdjak"
@@ -100,7 +84,6 @@ class Say
       end
 
       p "#{@final_result}<- Final result"
-      # @final_result << stick
       x += 1
     end
     @final_result 
@@ -118,6 +101,7 @@ class Say
     if num_chunk == "000" || num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
+      p "#{@ones_place[num_chunk.to_i.to_s]} asjfdka"
       @ones_place[num_chunk.to_i.to_s]
     else
       if num_chunk[-1] == "0"
@@ -145,5 +129,5 @@ end
 
 # a = Say.new(1999).in_english
 # p "1999 above *** 1000 below"
-a = Say.new(1000).in_english
+a = Say.new(1019).in_english
 p a
