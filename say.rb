@@ -63,19 +63,29 @@ class Say
         end
       end
 
-      if @split_num.length > x  
-        if !degrees[x+1].nil?
-          if huns == "0" && tens == "0" && ones == "0"
-            stick = degrees[x]
-          else
-            degree_of_num = @split_num.length
-            stick         = degrees[degree_of_num]
-            degree_of_num += 1
-          end
-        else
-          stick = ""
-        end
+      # if @split_num.length > x  
+      #   if !degrees[x+1].nil?
+      #     if huns == "0" && tens == "0" && ones == "0"
+      #       stick = degrees[x]
+      #     else
+      #       degree_of_num = @split_num.length
+      #       stick         = degrees[degree_of_num]
+      #       degree_of_num += 1
+      #     end
+      #   else
+      #     p "never"
+      #     stick = ""
+      #   end
+      # end
+
+      if x > 0 
+        p "herxxe"
+        stick = degrees[x+1]
+        @final_result << stick
+      else
+        stick = ""
       end
+      
 
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
@@ -84,12 +94,22 @@ class Say
         @final_result << huns + tens_n_ones(tens + ones) 
       end
 
-      space_for_next_degree(x)
+      not_all_zeroes_flag = not_all_zeroes(huns, tens, ones)
+      space_for_next_degree(x, not_all_zeroes_flag)
 
-      p "#{@final_result} <- Final result"
+      p "#{@final_result}<- Final result"
+      # @final_result << stick
       x += 1
     end
     @final_result 
+  end
+
+  def not_all_zeroes(huns, tens, ones)
+    if huns == "0" && tens == "0" && ones == "0"
+      false
+    else
+      true
+    end
   end
 
   def tens_n_ones(num_chunk)
@@ -110,13 +130,14 @@ class Say
     num.to_s.chars.reverse.each_slice(3).map { |s| s.reverse.join }.reverse
   end
 
-  def space_for_next_degree(x)
-    if !@split_num[x+1].nil?
+  def space_for_next_degree(x, not_all_zeroes)
+    if !@split_num[x+1].nil? && not_all_zeroes == true 
       @final_result << " "
     end
   end
-      
 end
 
 a = Say.new(1999).in_english
+p "1999 above *** 1000 below"
+a = Say.new(1000).in_english
 p a
