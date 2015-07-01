@@ -34,12 +34,11 @@ class Say
 
 
   def in_english
-    # binding.prybinding.pry
-    x            = 0
-    result       = ""
+    x             = 0
+    result        = ""
     @final_result = ""
-    degrees      = {1 => "", 2=> "thousand ", 3=> " million"}
-    flag         = true
+    degrees       = {1 => "", 2=> "thousand ", 3=> "million "}
+    deg           = @split_num.length
 
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
@@ -60,6 +59,8 @@ class Say
         ones = "" 
       end
 
+      not_all_zeroes_flag = not_all_zeroes(huns, tens, ones)
+
       if tens_n_ones(huns).length > 2 && tens_n_ones(huns) != "zero" 
         huns = tens_n_ones(huns) + " hundred"        
         if tens_n_ones(tens + ones).length > 1
@@ -67,11 +68,18 @@ class Say
         end
       end
 
-      if x > 0 
-        @final_result << degrees[x+1]
+      ### Append the degree of the 3 digits
+      if x > 0
+        # if you test for making sure that the tens_n_ones result is > 1 then 
+          # add the degree like 'thousand'
+          # otherwise, do NOT add the degree.
+        stick = degrees[deg]
+        @final_result << stick
+        deg -= 1
       else
         stick = ""
       end
+      ###
       
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
@@ -80,7 +88,7 @@ class Say
         @final_result << huns + tens_n_ones(tens + ones) 
       end
 
-      not_all_zeroes_flag = not_all_zeroes(huns, tens, ones)
+      
       space_for_next_degree(x, not_all_zeroes_flag)
       chop_space_for_all_zeroes(not_all_zeroes_flag)
     
@@ -128,6 +136,8 @@ class Say
   end
 end
 
+p a = Say.new(1234567).in_english
+p a = Say.new(1000000).in_english
 p a = Say.new(999999).in_english
 p a = Say.new(110999).in_english
 p a = Say.new(10999).in_english
