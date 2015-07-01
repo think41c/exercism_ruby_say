@@ -79,9 +79,7 @@ class Say
       # end
 
       if x > 0 
-        p "herxxe"
-        stick = degrees[x+1]
-        @final_result << stick
+        @final_result << degrees[x+1]
       else
         stick = ""
       end
@@ -96,6 +94,10 @@ class Say
 
       not_all_zeroes_flag = not_all_zeroes(huns, tens, ones)
       space_for_next_degree(x, not_all_zeroes_flag)
+
+      if not_all_zeroes_flag == false
+        @final_result = @final_result[0..-2]
+      end
 
       p "#{@final_result}<- Final result"
       # @final_result << stick
@@ -131,13 +133,17 @@ class Say
   end
 
   def space_for_next_degree(x, not_all_zeroes)
+    p not_all_zeroes
     if !@split_num[x+1].nil? && not_all_zeroes == true 
+      p "#{@final_result}------"
       @final_result << " "
+      p "#{@final_result}-----"
+
     end
   end
 end
 
-a = Say.new(1999).in_english
-p "1999 above *** 1000 below"
+# a = Say.new(1999).in_english
+# p "1999 above *** 1000 below"
 a = Say.new(1000).in_english
 p a
