@@ -71,22 +71,23 @@ class Say
       
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
-        p "#{@final_result} fsdjak"
       else
         @final_result << huns + tens_n_ones(tens + ones) 
       end
 
       not_all_zeroes_flag = not_all_zeroes(huns, tens, ones)
       space_for_next_degree(x, not_all_zeroes_flag)
-
-      if not_all_zeroes_flag == false
-        @final_result = @final_result[0..-2]
-      end
-
-      p "#{@final_result}<- Final result"
+      chop_space_for_all_zeroes(not_all_zeroes_flag)
+    
       x += 1
     end
     @final_result 
+  end
+
+  def chop_space_for_all_zeroes(not_all_zeroes_flag)
+    if not_all_zeroes_flag == false
+      @final_result = @final_result[0..-2]
+    end
   end
 
   def not_all_zeroes(huns, tens, ones)
@@ -101,7 +102,6 @@ class Say
     if num_chunk == "000" || num_chunk == "00"
       answer = ""
     elsif num_chunk.to_i < 20
-      p "#{@ones_place[num_chunk.to_i.to_s]} asjfdka"
       @ones_place[num_chunk.to_i.to_s]
     else
       if num_chunk[-1] == "0"
@@ -117,17 +117,13 @@ class Say
   end
 
   def space_for_next_degree(x, not_all_zeroes)
-    p not_all_zeroes
     if !@split_num[x+1].nil? && not_all_zeroes == true 
-      p "#{@final_result}------"
       @final_result << " "
-      p "#{@final_result}-----"
-
     end
   end
 end
 
-# a = Say.new(1999).in_english
-# p "1999 above *** 1000 below"
-a = Say.new(1019).in_english
-p a
+p a = Say.new(1999).in_english
+p a = Say.new(1001).in_english
+p a = Say.new(999).in_english
+p a = Say.new(0).in_english
