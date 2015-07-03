@@ -37,7 +37,7 @@ class Say
     x             = 0
     result        = ""
     @final_result = ""
-    degrees       = {1 => "", 2=> "thousand ", 3=> "million "}
+    degrees       = {1 => "", 2=> "thousand ", 3=> "million ", 4=> "billion "}
     deg           = @split_num.length
 
     until @split_num[x] == nil
@@ -133,7 +133,8 @@ class Say
   end
 end
 
-# p a = Say.new(1000000000).in_english
+p a = Say.new(999999999999).in_english
+p a = Say.new(1234567890).in_english
 p a = Say.new(999999999).in_english
 p a = Say.new(12345670).in_english
 p a = Say.new(1234567).in_english
