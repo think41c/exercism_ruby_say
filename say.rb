@@ -39,6 +39,7 @@ class Say
     @final_result = ""
     degrees       = {1 => "", 2=> "thousand ", 3=> "million ", 4=> "billion "}
     deg           = @split_num.length
+    dont_add_degree = false
 
     until @split_num[x] == nil
       if !@split_num[x][-3] == nil? 
@@ -73,9 +74,8 @@ class Say
       # Before appending the degree, make sure there is something new that's been added on length 
       # wise of characters. Such that "one million" is compared with the result from 000, which is "" 
       # Since the length of final_result being one million hasn't changed, then DONT append a degree to it.
-      
-
-      if x > 0
+      p @final_result.length
+      if x > 0 && dont_add_degree == false
         stick = degrees[deg]
         @final_result << stick
         deg -= 1
@@ -83,25 +83,32 @@ class Say
         stick = ""
       end 
       ### 
-      
+      before = @final_result.length
+
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
       else
         if huns == "0" then huns = "" end
         @final_result << huns + tens_n_ones(tens + ones) 
       end
-
       
+
       space_for_next_degree(x, not_all_zeroes_flag)
-      chop_space_for_all_zeroes(not_all_zeroes_flag)
+      chop_space_for_all_zeroes(not_all_zeroes_flag, dont_add_degree)
     
       x += 1
+      after = @final_result.length
+      if before > after 
+        dont_add_degree = true
+      end
+
+      p "**********************"
     end
     @final_result 
   end
 
-  def chop_space_for_all_zeroes(not_all_zeroes_flag)
-    if not_all_zeroes_flag == false
+  def chop_space_for_all_zeroes(not_all_zeroes_flag, dont_add_degree)
+    if not_all_zeroes_flag == false && dont_add_degree == false
       @final_result = @final_result[0..-2]
     end
   end
@@ -139,18 +146,19 @@ class Say
   end
 end
 
-p a = Say.new(999999999999).in_english
-p a = Say.new(1234567890).in_english
-p a = Say.new(999999999).in_english
-p a = Say.new(12345670).in_english
-p a = Say.new(1234567).in_english
-p a = Say.new(1000000).in_english
-p a = Say.new(999999).in_english
-p a = Say.new(110999).in_english
-p a = Say.new(10999).in_english
-p a = Say.new(1999).in_english
-p a = Say.new(1000).in_english
-p a = Say.new(999).in_english
-p a = Say.new(900).in_english
-p a = Say.new(90).in_english
-p a = Say.new(0).in_english
+# p a = Say.new(999999999999).in_english
+# p a = Say.new(1234567890).in_english
+# p a = Say.new(999999999).in_english
+p a = Say.new(1000000000).in_english
+# p a = Say.new(12345670).in_english
+# p a = Say.new(1234567).in_english
+# p a = Say.new(999000000).in_english
+# p a = Say.new(999999).in_english
+# p a = Say.new(110999).in_english
+# p a = Say.new(10999).in_english
+# p a = Say.new(1999).in_english
+# p a = Say.new(1000).in_english
+# p a = Say.new(999).in_english
+# p a = Say.new(900).in_english
+# p a = Say.new(90).in_english
+# p a = Say.new(0).in_english
