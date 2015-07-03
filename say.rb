@@ -69,14 +69,20 @@ class Say
       end
 
       ### Append the degree of the 3 digits
+
+      # Before appending the degree, make sure there is something new that's been added on length 
+      # wise of characters. Such that "one million" is compared with the result from 000, which is "" 
+      # Since the length of final_result being one million hasn't changed, then DONT append a degree to it.
+      
+
       if x > 0
         stick = degrees[deg]
         @final_result << stick
         deg -= 1
       else
         stick = ""
-      end
-      ###
+      end 
+      ### 
       
       if huns == "0" && tens == "0" && ones == "0"
         num_chunk_to_send = "" 
