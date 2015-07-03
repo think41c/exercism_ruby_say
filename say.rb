@@ -70,11 +70,6 @@ class Say
 
       ### Append the degree of the 3 digits
       if x > 0
-        # if you test for making sure that the tens_n_ones result is > 1 then 
-          # add the degree like 'thousand'
-          # otherwise, do NOT add the degree.
-        # OR i could test to see if all the numbers are 0's, and if so, to ignore adding a degree.
-
         stick = degrees[deg]
         @final_result << stick
         deg -= 1
@@ -138,6 +133,9 @@ class Say
   end
 end
 
+# p a = Say.new(1000000000).in_english
+p a = Say.new(999999999).in_english
+p a = Say.new(12345670).in_english
 p a = Say.new(1234567).in_english
 p a = Say.new(1000000).in_english
 p a = Say.new(999999).in_english
