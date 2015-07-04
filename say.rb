@@ -83,9 +83,7 @@ class Say
         num_chunk_to_send = "" 
       else
         if huns == "0" then huns = "" end
-        # Here is where the "one milliontwo" breaks down
-        # It adds two without looking to see that A) final_result is lenght > 1 and B) the last character isn't a space
-        # so it needs to add a space if those two things are the case.
+          
         if @final_result.length > 1 && @final_result[-1] != " "
           @final_result << " "
         end
