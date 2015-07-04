@@ -1,7 +1,8 @@
 class Say
   def initialize(number)
+    bounds_test(number)
     @ones_place = {
-                           "00" => "", 
+                  "00" => "", 
                   "0"  => "zero",      "1" => "one", 
                   "2"  => "two",       "3" => "three",
                   "4"  => "four",      "5" => "five",
@@ -20,12 +21,10 @@ class Say
                   "8" => "eighty", "9" => "ninety"
                   }
     @number = number
-    bounds_test(number)
   end
 
   def in_english
     x             = 0
-    result        = ""
     @final_result = ""
     degrees       = {1 => "", 2=> "thousand ", 3=> "million ", 4=> "billion "}
     deg           = @split_num.length
