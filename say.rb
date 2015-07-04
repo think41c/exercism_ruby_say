@@ -69,12 +69,6 @@ class Say
         end
       end
 
-      ### Append the degree of the 3 digits
-
-      # Before appending the degree, make sure there is something new that's been added on length 
-      # wise of characters. Such that "one million" is compared with the result from 000, which is "" 
-      # Since the length of final_result being one million hasn't changed, then DONT append a degree to it.
-      p @final_result.length
       if x > 0 && dont_add_degree == false
         stick = degrees[deg]
         @final_result << stick
@@ -82,7 +76,7 @@ class Say
       else
         stick = ""
       end 
-      ### 
+
       before = @final_result.length
 
       if huns == "0" && tens == "0" && ones == "0"
@@ -92,17 +86,17 @@ class Say
         @final_result << huns + tens_n_ones(tens + ones) 
       end
       
-
       space_for_next_degree(x, not_all_zeroes_flag)
       chop_space_for_all_zeroes(not_all_zeroes_flag, dont_add_degree)
-    
+      # HAS NOT BEEN COMMIT - use .prepend(" ") to add a space prior if there is any length of final_result 
+      # Also check to make sure the last character in final_result is NOT a space. 
+ 
       x += 1
+
       after = @final_result.length
       if before > after 
         dont_add_degree = true
       end
-
-      p "**********************"
     end
     @final_result 
   end
@@ -149,7 +143,7 @@ end
 # p a = Say.new(999999999999).in_english
 # p a = Say.new(1234567890).in_english
 # p a = Say.new(999999999).in_english
-p a = Say.new(1000000000).in_english
+# p a = Say.new(1000000000).in_english
 # p a = Say.new(12345670).in_english
 # p a = Say.new(1234567).in_english
 # p a = Say.new(999000000).in_english
@@ -161,4 +155,5 @@ p a = Say.new(1000000000).in_english
 # p a = Say.new(999).in_english
 # p a = Say.new(900).in_english
 # p a = Say.new(90).in_english
-# p a = Say.new(0).in_english
+p a = Say.new(0).in_english
+p a = Say.new(1000002).in_english
