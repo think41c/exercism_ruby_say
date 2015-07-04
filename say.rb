@@ -83,14 +83,16 @@ class Say
         num_chunk_to_send = "" 
       else
         if huns == "0" then huns = "" end
+        # Here is where the "one milliontwo" breaks down
+        # It adds two without looking to see that A) final_result is lenght > 1 and B) the last character isn't a space
+        # so it needs to add a space if those two things are the case.
+
         @final_result << huns + tens_n_ones(tens + ones) 
       end
       
       space_for_next_degree(x, not_all_zeroes_flag)
       chop_space_for_all_zeroes(not_all_zeroes_flag, dont_add_degree)
-      # HAS NOT BEEN COMMIT - use .prepend(" ") to add a space prior if there is any length of final_result 
-      # Also check to make sure the last character in final_result is NOT a space. 
- 
+
       x += 1
 
       after = @final_result.length
