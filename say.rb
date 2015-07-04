@@ -1,5 +1,3 @@
-require 'pry'
-
 class Say
   def initialize(number)
     @ones_place = {""  => "",         "00" => "", 
@@ -22,16 +20,7 @@ class Say
                   }
     @number = number
     bounds_test(number)
-
   end
-
-  def bounds_test(num_to_test)
-    if num_to_test < 0 || num_to_test >= 1_000_000_000_000 
-      raise ArgumentError, "Out of bounds"
-    end
-    @split_num = split(num_to_test)            
-  end
-
 
   def in_english
     x             = 0
@@ -96,9 +85,7 @@ class Say
 
       x += 1
 
-      after = @final_result.length
-      
-      if before > after 
+      if before > @final_result.length 
         dont_add_degree = true
       end
     end
@@ -141,5 +128,12 @@ class Say
     if !@split_num[x+1].nil? && not_all_zeroes == true 
       @final_result << " "
     end
+  end
+
+  def bounds_test(num_to_test)
+    if num_to_test < 0 || num_to_test >= 1_000_000_000_000 
+      raise ArgumentError, "Out of bounds"
+    end
+    @split_num = split(num_to_test)            
   end
 end
