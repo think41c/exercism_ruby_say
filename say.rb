@@ -97,6 +97,7 @@ class Say
       x += 1
 
       after = @final_result.length
+      
       if before > after 
         dont_add_degree = true
       end
@@ -142,21 +143,3 @@ class Say
     end
   end
 end
-
-# p a = Say.new(999999999999).in_english
-# p a = Say.new(1234567890).in_english
-# p a = Say.new(999999999).in_english
-# p a = Say.new(1000000000).in_english
-# p a = Say.new(12345670).in_english
-# p a = Say.new(1234567).in_english
-# p a = Say.new(999000000).in_english
-# p a = Say.new(999999).in_english
-# p a = Say.new(110999).in_english
-# p a = Say.new(10999).in_english
-# p a = Say.new(1999).in_english
-# p a = Say.new(1000).in_english
-# p a = Say.new(999).in_english
-# p a = Say.new(900).in_english
-# p a = Say.new(90).in_english
-p a = Say.new(0).in_english
-p a = Say.new(1000002).in_english
